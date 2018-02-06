@@ -1,0 +1,26 @@
+{
+  "name": "demo-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "concurrently": "^3.5.1",
+    "jsonp": "^0.2.1",
+    "prop-types": "^15.6.0",
+    "react": "16.2.0",
+    "react-addons-pure-render-mixin": "^15.6.2",
+    "react-dom": "16.2.0",
+    "react-imageview": "^1.2.1",
+    "react-keeper": "^2.1.7",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2"
+  },
+  "scripts": {
+    "react-start": "react-scripts start",
+    "start": "concurrently \"yarn react-start\" \"cd server && yarn start\"",
+    "react-build": "react-scripts build",
+    "build": "concurrently \"yarn react-build\" \"cd server && yarn build\""
+  },
+  "proxy": "http://127.0.0.1:3001"
+}

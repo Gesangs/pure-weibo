@@ -1,0 +1,21 @@
+.commentList {
+  margin: 10px 15px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.commentList span {
+  font-size: 13px;
+}
+
+.commentList > .Content {
+  margin-left: 46px;
+  font-size: 14px;
+}
+.commentList .reply_comment > .Content {
+  background-color: rgb(240, 240, 240);
+  margin-left: 46px;
+  font-size: 12px;
+  padding: 5px 10px;
+  line-height: 25px;
+}

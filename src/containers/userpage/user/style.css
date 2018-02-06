@@ -1,0 +1,40 @@
+.UserPage .headBar {
+    position: fixed;
+}
+.UserPage .userHeader{
+    width: 100%;
+}
+.UserPage .userHeader .coverImg{
+    width: 100%;
+    height: 160px;
+    background-position: center;
+    background-size: cover;
+}
+.UserPage .userHeader .head_pic {
+    width: 72px;
+    height: 72px;
+    border-radius: 72px;
+    box-sizing: border-box;
+    padding: 4px; 
+    margin: -36px 15px 0 15px;
+    background-color: #fff;
+    display: inline-block;
+}
+.UserPage .userHeader .head_pic img {
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+}
+.UserPage .userHeader .countNum{
+    display: block;
+    font-size: 13px;
+    margin: 15px 25px;
+}
+.UserPage .userHeader .tabBar span {
+    display: inline-block;
+    width: 110px;
+    text-align: center;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+}

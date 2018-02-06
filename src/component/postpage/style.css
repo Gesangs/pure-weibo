@@ -1,0 +1,116 @@
+.post {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 4;
+}
+.post .postHead{
+    width: 100%;
+    height: 50px;
+    background-color: #3498db;
+    box-shadow: 0 2px 4px 0 #3498db;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+.post .postHead img{
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    margin-right: 15px;
+}
+.post form textarea{
+    border: none;
+    width: 94%;
+    height: 120px;
+    margin: 10px auto;
+    display: block;
+    outline: none;
+    resize: none
+}
+.post form div{
+    width: 90%;
+    text-align: right;
+}
+
+.post .postFoot{
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    background-color: #3498db;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 3px 0px 4px 0 rgba(53, 152, 219, 0.7)
+}
+
+.post .status-image {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.status-image .image-select {
+    width: 32%;
+    height: 0;
+    padding-bottom: 32%;
+    background-color: red;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.status-image .image-img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.status-image .image-img .img {
+    width: 32%;
+    height: 0;
+    padding-bottom: 32%;
+    background-size: 100%;
+    border: 0;
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    display: inline-block;
+}
+
+.status-image .image-img .image-close {
+    color: #007AFF;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: .5rem;
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.icon {
+    background-color: red;
+}
+
+.footBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.footBar .left-bar span{
+    margin: 0 10px;
+}

@@ -1,0 +1,117 @@
+.list {
+  width: 92%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.listHead {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  height: 36px;
+}
+
+.listHead .listPic {
+  flex: 0 0 36px;
+  height: 36px;
+  width: 36px;
+  border-radius: 36px;
+}
+
+.listHead .listNameS {
+  height: 36px;
+  padding-left: 10px;
+}
+
+.listHead .listName {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.listHead .listSource {
+  font-size: 10px;
+  color: rgb(184, 184, 184);
+}
+
+.listContent {
+  box-sizing: border-box;
+  word-break: break-all;
+  width: 100%;
+  padding-left: 1px;
+  line-height: 25px;
+  font-size: 13px;
+}
+
+a {
+  text-decoration: none;
+  color: #eb7350;
+}
+
+.listImg {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.listImg .weiboImg {
+  display: block;
+  width: 32%;
+  height: 0px;
+  padding-bottom: 32%;
+  overflow: hidden;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  background-size: cover;
+  background-position: top;
+}
+
+.zoomBack {
+  position: fixed;
+  background-color: #000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 100;
+}
+
+
+.imgZoom {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: inline-block;
+}
+
+.retWeibo {
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 5px 0px 5px 1px;
+  background-color: rgb(240, 240, 240);
+  font-size: 13px;
+  line-height: 25px;
+  word-break: break-all;
+}
+
+.retWeibo .retFoot {
+  font-size: 10px;
+  color: rgb(164, 164, 164);
+}
+
+.listFoot {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 1px;
+}
+
+.listFoot div {
+  display: inline-block;
+  width: 32%;
+  height: 40px;
+  color: rgb(124, 124, 124);
+  font-size: 13px;
+  line-height: 40px;
+}

@@ -1,0 +1,23 @@
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.refresh {
+    position: absolute;
+    left: 50%;
+    transform: translate3d(-50%, -120px, 0);
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    /* background-image: url("./loading.gif"); */
+    z-index: 2;
+}
+.loadMore{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
