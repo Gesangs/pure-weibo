@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
-import { stopPro } from "../../utils/stopPro";
+import { goToAny } from "../../router/route";
 import { Control } from "react-keeper";
 class ListImg extends Component {
   constructor(props, context) {
@@ -13,8 +13,9 @@ class ListImg extends Component {
     };
   }
   goToImageZoom(imgs, index, e) {
-    stopPro(e);
-    Control.go("/imageZoom", { imagelist: imgs, current: index });
+    goToAny(() => {
+      Control.go("/imageZoom", { imagelist: imgs, current: index });
+    }, e)
   }
   render() {
     const imgs = this.props.imgs;

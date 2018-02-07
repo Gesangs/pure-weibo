@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import WeiboList from "../weiboflow/index"
+import WeiboFlow from "../weiboflow/index"
 
 class Home extends Component {
     constructor(props, context){
@@ -9,7 +9,7 @@ class Home extends Component {
     }
      render(){
          return(
-             <WeiboList getNewWeiBo={"getNewWeiBo"} />
+             <WeiboFlow getNewWeiBo={"getNewWeiBo"} />
          )
      }
 }

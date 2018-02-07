@@ -39,7 +39,7 @@ class UserPage extends Component {
   render() {
     const { weiboList, userinfo, showList } = this.state;
     return (
-      <div className="User">
+      <div className="UserPage">
         <User userinfo={userinfo} SwitchTab={this.SwitchTab.bind(this)} />
         { showList
          ? <WeiboList weiboList={weiboList} />

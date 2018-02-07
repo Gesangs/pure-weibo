@@ -1,16 +1,20 @@
-.UserPage .headBar {
+.UserPage{
+    z-index: 999;
+}
+
+.User .headBar {
     position: fixed;
 }
-.UserPage .userHeader{
+.User .userHeader{
     width: 100%;
 }
-.UserPage .userHeader .coverImg{
+.User .userHeader .coverImg{
     width: 100%;
     height: 160px;
     background-position: center;
     background-size: cover;
 }
-.UserPage .userHeader .head_pic {
+.User .userHeader .head_pic {
     width: 72px;
     height: 72px;
     border-radius: 72px;
@@ -20,17 +24,17 @@
     background-color: #fff;
     display: inline-block;
 }
-.UserPage .userHeader .head_pic img {
+.User .userHeader .head_pic img {
     width: 64px;
     height: 64px;
     border-radius: 64px;
 }
-.UserPage .userHeader .countNum{
+.User .userHeader .countNum{
     display: block;
     font-size: 13px;
     margin: 15px 25px;
 }
-.UserPage .userHeader .tabBar span {
+.User .userHeader .tabBar span {
     display: inline-block;
     width: 110px;
     text-align: center;

@@ -1,7 +1,7 @@
 .detail{
   margin-bottom: 40px;
-  z-index: 4;
-  padding-top: 50px;
+  z-index: 999;
+  padding-bottom: 50px;
 }
 .detailHead {
     position: fixed;

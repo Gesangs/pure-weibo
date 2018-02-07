@@ -5,6 +5,7 @@ import { handleWeiboList } from "../../utils/class/weibo";
 
 import Scroll from "../../component/scroll/index";
 import WeiboList from "../../component/weibolist";
+import weibolist from "../../component/weibolist";
 
 class WeiboFlow extends Component {
   constructor(props, context) {
@@ -17,7 +18,7 @@ class WeiboFlow extends Component {
   }
   componentWillMount() {
     this.fun = api[this.props.getNewWeiBo];
-    this._getNewWeiBo();
+    // this._getNewWeiBo();
   }
 
   _getNewWeiBo() {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ListImg  from "./listimg";
 import Content from "./content";
-import { stopPro } from "../../utils/stopPro"
+import {goToAny} from "../../router/route"
 import { Control } from "react-keeper";
 import "./weibo.css";
 
@@ -14,25 +14,19 @@ class Weibo extends Component {
   }
 
   goToUser(user, e) {
-    stopPro(e)
-    Control.go(`/user/${user.id}`, { user })
-    setTimeout(() => {
-      document.getElementsByClassName("Index")[0].style.display = 'none';
-    },200)
+    goToAny(() => {
+      Control.go(`/user/${user.id}`, { user })
+    }, e)
   }
   goToDetail(weibo, e) {
-    stopPro(e)
-    Control.go(`/detail/${weibo.id}`, { weibo })
-    setTimeout(() => {
-      document.getElementsByClassName("Index")[0].style.display = 'none';
-    },200)
+    goToAny(() => {
+      Control.go(`/detail/${weibo.id}`, { weibo })
+    }, e)
   }
   goToPost(id, e) {
-    stopPro(e)
-    Control.go(`/post`, { id })
-    setTimeout(() => {
-      document.getElementsByClassName("Index")[0].style.display = 'none';
-    },200)
+    goToAny(() => {
+      Control.go(`/post`, { id })
+    }, e)
   }
   render() {
     const { weibo } = this.props;

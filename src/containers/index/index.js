@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { getEmotions } from "../../api/weibo";
 import { getUserMsg } from "../../api/user";
 import { handleUser } from "../../utils/class/user";
+import { Control } from "react-keeper";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -34,7 +35,7 @@ class Index extends Component {
   }
   render() {
     return (
-      <div className="Index">
+      <div className="Index" >
         <Head />
         {this.props.children}
         <Foot />

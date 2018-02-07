@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     background-color: #fff;
-    z-index: 4;
+    z-index: 999;
 }
 .post .postHead{
     width: 100%;

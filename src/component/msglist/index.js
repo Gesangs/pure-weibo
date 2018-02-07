@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import Scroll from "../scroll/index";
+import Loading from "../loading/index"
 import Comment from "../comment/index";
 import * as api from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
@@ -55,7 +56,7 @@ class MsgList extends Component {
         onReachBottom={this._getMoreData.bind(this)}
         load_tip={this.state.isMore}
       >
-        <Comment commentList={data} />
+        {/* {data.length ? <Comment commentList={data} /> : <Loading />} */}
       </Scroll>
     );
   }

@@ -37,7 +37,7 @@ export function handleUser(user) {
     gender: user.gender === "m" ? "男" : "女",
     create_time: new Date(user.created_at).toISOString().slice(0,10),
     head_pic: user.avatar_large,
-    pic_urls: handlePic(user.cover_image || user.cover_image_phone),
+    pic_urls: handlePic(user.cover_image, user.cover_image_phone),
     friends_count:numFormat(user.friends_count),
     followers_count:numFormat(user.followers_count),
     statuses_count:numFormat(user.statuses_count),
@@ -47,10 +47,8 @@ export function handleUser(user) {
   });
 }
 
-function handlePic(imgs){
-  if(imgs) {
-    return imgs.replace(/(;http[^;]+.(jpg|png))/g, "");
-  } else {
-    return ""
-  }
+function handlePic(img1 = "", img2 = ""){
+  return [...(img2.split(";")), ...(img1.split(";"))].filter((x) => {
+    if(x != "") return true;
+  });
 }

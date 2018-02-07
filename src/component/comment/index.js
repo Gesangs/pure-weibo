@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Content from "../../component/weibo/content"
 import { getComments } from "../../api/comment"
-import { stopPro } from "../../utils/stopPro"
+import { goToAny } from "../../router/route"
 import { Control } from "react-keeper";
 import "./style.css"
 class Comment extends Component {
@@ -11,12 +11,9 @@ class Comment extends Component {
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
     goToUser(user, e) {
-        stopPro(e)
-        Control.go(`/user/${user.id}`, { user })
-        setTimeout(() => {
-          document.getElementsByClassName("Index")[0].style.display = 'none';
-        // console.log(user)
-        },200)
+        goToAny(() => {
+            Control.go(`/user/${user.id}`, { user })
+        }, e)
       }
     render() {
         const comments = this.props.commentList;

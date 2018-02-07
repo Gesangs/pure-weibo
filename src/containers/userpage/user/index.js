@@ -1,42 +1,45 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { Control } from "react-keeper";
+import {goBack, goToAny} from "../../../router/route"
 import "./style.css";
 class User extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
-  goBack() {
-    Control.go(-1);
-    setTimeout(() => {
-      document.getElementsByClassName("Index")[0].style.display = "block";
-    }, 100);
-  }
   SwitchTab() {
     const switchs = this.props.SwitchTab;
     switchs();
+  }
+  goToImageZoom(imgs, e) {
+    goToAny(() => {
+      Control.go("/imageZoom", { imagelist: imgs });
+    }, e)
   }
   render() {
     const userinfo = this.props.userinfo;
     return (
       <div>
         {userinfo ? (
-          <div className="UserPage">
-            <div className="headBar" onClick={this.goBack.bind(this)}>
+          <div className="User">
+            <div className="headBar" onClick={(e) => {goBack(e)}}>
               返回
             </div>
             <div className="userHeader">
               <div
                 className="coverImg"
-                style={{ backgroundImage: `url(${userinfo.pic_urls}) ` }}
+                style={{ backgroundImage: `url(${userinfo.pic_urls[0]})` }}
+                onClick={this.goToImageZoom.bind(this, userinfo.pic_urls)}
               />
               <div className="head_pic">
                 <img src={userinfo.head_pic} />
               </div>
               <span>{userinfo.name}</span>
               <span className="countNum">
-                关注 {userinfo.friends_count} | 粉丝 {userinfo.followers_count}
+                <span>关注 {userinfo.friends_count}</span>
+                 | 
+                <span>粉丝 {userinfo.followers_count}</span>
               </span>
               <span />
               <div className="tabBar">
