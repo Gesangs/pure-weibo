@@ -19,10 +19,11 @@ class UserPage extends Component {
       userinfo: Control.state.user || {},
       showList: false
     };
+    this.isUserId = localStorage.getItem("uid") === Control.state.user.id;
   }
   componentDidMount() {
     const id = this.state.userinfo.id
-    if(localStorage.getItem("uid") == id) {
+    if(this.isUserId) {
       getUserWeiBo(id).then(res => {
         this.setState({
           weiboList: handleWeiboList(res.data.statuses) || false
@@ -31,7 +32,7 @@ class UserPage extends Component {
     }
   }
   SwitchTab(){
-    if(localStorage.getItem("uid") != this.state.userinfo.id) return;
+    if(!this.isUserId) return;
     this.setState({
       showList: !this.state.showList
     })

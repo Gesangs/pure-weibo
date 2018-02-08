@@ -12,10 +12,10 @@ class Massage extends Component {
         return (
             <div className="Massage">
                 <div className="MassageBar">
-                    <Link type="div" to="/massage/at_me_weibo" activeClassName="activeClass">@我的微博</Link>
-                    <Link type="div" to="/massage/at_me_comment" activeClassName="activeClass">@我的评论</Link>
-                    <Link type="div" to="/massage" activeClassName="activeClass">收到的评论</Link>
-                    <Link type="div" to="/massage/comment_by_me" activeClassName="activeClass">发出的评论</Link>
+                    <Link type="div" to="/index/massage/at_me_weibo" activeClassName="activeClass">@我的微博</Link>
+                    <Link type="div" to="/index/massage/at_me_comment" activeClassName="activeClass">@我的评论</Link>
+                    <Link type="div" to="/index/massage" activeClassName="activeClass">收到的评论</Link>
+                    <Link type="div" to="/index/massage/comment_by_me" activeClassName="activeClass">发出的评论</Link>
                 </div>
                 {this.props.children}
             </div>

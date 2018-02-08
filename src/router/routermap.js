@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { HashRouter,Route } from "react-keeper";
 
+import Root from "../containers/index"
 import Index from "../containers/index/index.js";
 import Home from "../containers/home/index"
 import Massage from "../containers/massage/index"
@@ -24,21 +25,23 @@ class RouterMap extends Component {
     return (
       <HashRouter>
         <div>
-          <Route cache component={Index} path="/">
-            <Route index cache='parent' component={Home} />
-            <Route component={Massage} path="/massage">
-              <Route index cache='parent' component={CommentToMe} />
-              <Route cache='parent' component={AtMeComment} path="/at_me_comment" />
-              <Route cache='parent' component={AtMeWeibo} path="/at_me_weibo" />
-              <Route cache='parent' component={CommentByMe} path="/comment_by_me" />
+          <Route component={Root} path="/">
+            <Route index component={Index} path="/index">
+              <Route index cache component={Home} path="/home" />
+              <Route component={Massage} path="/massage">
+                <Route index cache='parent' component={CommentToMe} />
+                <Route cache='parent' component={AtMeComment} path="/at_me_comment" />
+                <Route cache='parent' component={AtMeWeibo} path="/at_me_weibo" />
+                <Route cache='parent' component={CommentByMe} path="/comment_by_me" />
+              </Route>
+              <Route component={HotPage} cache='parent' path="/hot" /> 
             </Route>
-            <Route component={HotPage} cache='parent' path="/hot" /> 
+            <Route component={UserPage} path="/user/:id" />
+            <Route component={Detail} path="/detail/:id" />
+            <Route component={Post} path="/post" />
+            <Route component={ImageZoom} path="/imageZoom" />
+            <Route miss component={NotFound} />
           </Route>
-          <Route component={UserPage} path="/user/:id" />
-          <Route component={Detail} path="/detail/:id" />
-          <Route component={Post} path="/post" />
-          <Route component={ImageZoom} path="/imageZoom" />
-          <Route miss component={NotFound} path="/NotFound" />
         </div>
       </HashRouter>
     );

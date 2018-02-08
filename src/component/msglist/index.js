@@ -56,7 +56,7 @@ class MsgList extends Component {
         onReachBottom={this._getMoreData.bind(this)}
         load_tip={this.state.isMore}
       >
-        {/* {data.length ? <Comment commentList={data} /> : <Loading />} */}
+        {data.length ? <Comment commentList={data} /> : <Loading />}
       </Scroll>
     );
   }

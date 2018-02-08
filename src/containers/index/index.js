@@ -34,8 +34,9 @@ class Index extends Component {
     })
   }
   render() {
+    // const patt=/(\/massage|\/hot|^\/$)/g; style={{ display: `${patt.test(Control.path) ? "block" : "none"}` }}
     return (
-      <div className="Index" >
+      <div className="Index">
         <Head />
         {this.props.children}
         <Foot />

@@ -26,15 +26,16 @@ class Foot extends Component {
           }, e)
       }
     render() {
-        const patt=/(\/massage|\/hot|^\/$)/g;
         return(
-            <div style={{ display: `${patt.test(Control.path) ? "block" : "none"}` }} >
+            <div>
                 <div style={{ "bottom": -3 }} className="foot">
-                    <Link type="div" to={'/'}>主页</Link>
-                    <Link type="div" to={'/massage'}>消息</Link>
-                    <Link type="div" to={'/hot'}>热门</Link>
+                    <Link type="div" to={'/index/home'}>主页</Link>
+                    <Link type="div" to={'/index/massage'}>消息</Link>
+                    <Link type="div" to={'/index/hot'}>热门</Link>
                 </div>
-                {Control.path === "/home" ?<div className="qiuqiu" onClick={this.goToPost.bind(this)}></div> : ""}
+                { Control.path === "/" || Control.path === "/index/home"
+                  ? <div className="qiuqiu" onClick={this.goToPost.bind(this)}></div> 
+                  : "" }
             </div>
         )
     }

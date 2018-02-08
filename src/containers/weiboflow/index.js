@@ -18,7 +18,7 @@ class WeiboFlow extends Component {
   }
   componentWillMount() {
     this.fun = api[this.props.getNewWeiBo];
-    // this._getNewWeiBo();
+    this._getNewWeiBo();
   }
 
   _getNewWeiBo() {

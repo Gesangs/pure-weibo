@@ -1,29 +1,25 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import { Control } from "react-keeper";
+import { goToAny } from "../../router/route";
 import "./style.css";
 class Head extends Component {
   constructor() {
     super();
   }
-  goToUser() {
+  goToUser(e) {
     const user = this.props.userinfo.userinfo;
-    Control.go(`/user/${user.id}`,{user, show: true})
-    setTimeout(() => {
-      document.getElementsByClassName("Index")[0].style.display = 'none';
-    },200)
+    goToAny(() => {
+      Control.go(`/user/${user.id}`,{user})
+    }, e)
   }
   render() {
-    const patt=/(\/massage|\/hot|^\/$)/g;
     return (
-      <div style={{ display: `${patt.test(Control.path) ? "block" : "none"}` }}>
         <div className="head">
-          <div onClick={this.goToUser.bind(this, )}>
+          <div onClick={this.goToUser.bind(this)}>
             用户
           </div>
           <div>全部微博</div>
         </div>
-      </div>
     );
   }
 }

@@ -13,10 +13,4 @@ export function goToAny(fun, e){
 export function goBack(e) {
     stopPro(e)
     Control.go(-1);
-  }
-  // setTimeout(() => {
-    //   document.getElementsByClassName("Index")[0].style.display = "block";
-    // }, 100);
-    // setTimeout(() => {
-    //     document.getElementsByClassName("Index")[0].style.display = 'none';
-    // },200)
+}
