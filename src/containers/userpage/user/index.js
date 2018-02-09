@@ -13,9 +13,7 @@ class User extends Component {
     switchs();
   }
   goToImageZoom(imgs, e) {
-    goToAny(() => {
-      Control.go("/imageZoom", { imagelist: imgs });
-    }, e)
+    goToAny("/imageZoom", { imagelist: imgs }, e)
   }
   render() {
     const userinfo = this.props.userinfo;
@@ -33,12 +31,12 @@ class User extends Component {
                 onClick={this.goToImageZoom.bind(this, userinfo.pic_urls)}
               />
               <div className="head_pic">
-                <img src={userinfo.head_pic} />
+                <img alt="head" src={userinfo.head_pic} />
               </div>
               <span>{userinfo.name}</span>
               <span className="countNum">
                 <span>关注 {userinfo.friends_count}</span>
-                 | 
+                 {" | "}
                 <span>粉丝 {userinfo.followers_count}</span>
               </span>
               <span />

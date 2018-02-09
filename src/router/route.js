@@ -5,9 +5,9 @@ export function stopPro(e) {
     e.nativeEvent.stopImmediatePropagation();
 }
 
-export function goToAny(fun, e){
+export function goToAny(path, state, e){
     stopPro(e)
-    fun() 
+    Control.go(path, state);
 }
 
 export function goBack(e) {

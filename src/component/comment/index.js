@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Content from "../../component/weibo/content"
-import { getComments } from "../../api/comment"
 import { goToAny } from "../../router/route"
-import { Control } from "react-keeper";
 import "./style.css"
 class Comment extends Component {
     constructor(props, context) {
@@ -11,9 +9,7 @@ class Comment extends Component {
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
     goToUser(user, e) {
-        goToAny(() => {
-            Control.go(`/user/${user.id}`, { user })
-        }, e)
+        goToAny(`/user/${user.id}`, { user }, e)
       }
     render() {
         const comments = this.props.commentList;
@@ -22,7 +18,7 @@ class Comment extends Component {
             {comments.map((item, index) => (
                 <div className="commentList" key={index}>
                     <div className="listHead">
-                        <img src={item.user.head_pic} className="listPic" onClick={this.goToUser.bind(this, item.user)} />
+                        <img alt="head" src={item.user.head_pic} className="listPic" onClick={this.goToUser.bind(this, item.user)} />
                         <div className="listNameS">
                             <span className="listName" onClick={this.goToUser.bind(this, item.user)}>{item.user.name}</span>
                             <div className="listSource">

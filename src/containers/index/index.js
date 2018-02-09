@@ -3,7 +3,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { getEmotions } from "../../api/weibo";
 import { getUserMsg } from "../../api/user";
 import { handleUser } from "../../utils/class/user";
-import { Control } from "react-keeper";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -17,9 +16,6 @@ class Index extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = {
-      currentTag: ""
-    }
   }
   componentDidMount() {
     getEmotions().then(res => {
@@ -34,7 +30,6 @@ class Index extends Component {
     })
   }
   render() {
-    // const patt=/(\/massage|\/hot|^\/$)/g; style={{ display: `${patt.test(Control.path) ? "block" : "none"}` }}
     return (
       <div className="Index">
         <Head />

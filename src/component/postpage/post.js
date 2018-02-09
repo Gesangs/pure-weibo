@@ -12,9 +12,9 @@ class Post extends Component{
         this.state = {
             value: "",
             dataUrl: '',
-            pic: null,
-            file: null,
         }
+        this.pic = null;
+        this.file = null;
     }
     handleChange(e) {
         if(this.state.value.length !== 140){
@@ -47,7 +47,7 @@ class Post extends Component{
         }
         var reader = new FileReader()
         // 将图片将转成 base64 格式
-        reader.readAsDataURL(self.state.file)
+        reader.readAsDataURL(self.file)
         // 读取成功后的回调
         reader.onloadend = function () {
             self.setState({
@@ -57,8 +57,8 @@ class Post extends Component{
     }
     imageChange(e) {
         let inputDOM = this.refs.inputer;
-        this.state.file = inputDOM.files[0];
-        this.imgPreview(this.state.file)
+        this.file = inputDOM.files[0];
+        this.imgPreview(this.file)
     }
     render() {
         const user = this.props.userinfo.userinfo;
@@ -66,7 +66,7 @@ class Post extends Component{
         return(
             <div className="post">
                 <div className="postHead">
-                    <img src={user.head_pic} />
+                    <img src={user.head_pic} alt="head" />
                     <div>
                     <span>{Control.state.title}</span>
                     <div style={{fontSize: 11}}>{user.name}</div>

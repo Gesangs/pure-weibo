@@ -137,6 +137,7 @@ apiRoutes.get('/shouquan', function(req, res) {
                 console.log(body)
             }else{
                 console.log(response.statusCode);
+                console.log(body)
             }
         }
     );

@@ -1,15 +1,11 @@
 import React, { Component } from "react";
+import PureRenderMixin from "react-addons-pure-render-mixin";
 import { Control } from "react-keeper";
 import "./style.css"
 class Foot extends Component {
-    constructor() {
-        super()
-    }
-    goBack() {
-        Control.go(-1);
-        setTimeout(() => {
-          document.getElementsByClassName("Index")[0].style.display = "block";
-        }, 200);
+    constructor(props, context) {
+        super(props, context);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
       }
     render() {
         return(

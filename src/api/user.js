@@ -1,5 +1,24 @@
 import {jsonp} from './jsonp'
 import { access_token } from "../config/config"
+import axios from "axios";
+
+export function getAccess_token(Code) {
+  axios
+    .get("/api/shouquan", {
+      params: Code
+    })
+    .then(res => {
+      const data =  JSON.parse(res.data);
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("uid", data.uid);
+
+      // 计算access_token过期时间
+      const time = data.expires_in;
+      const currentTime = new Date().getTime();
+      const endTime = new Date(currentTime + time).toLocaleString().replace(/(\/|下午|上午|:| )/g, "");
+      localStorage.setItem("endTime", endTime);
+    });
+}
 
 
 

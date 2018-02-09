@@ -35,7 +35,7 @@ export function handleUser(user) {
     id: user.id,
     name: user.screen_name,
     gender: user.gender === "m" ? "男" : "女",
-    create_time: new Date(user.created_at).toISOString().slice(0,10),
+    create_time: new Date(user.created_at).toLocaleDateString().replace(/\//g, "-"),
     head_pic: user.avatar_large,
     pic_urls: handlePic(user.cover_image, user.cover_image_phone),
     friends_count:numFormat(user.friends_count),
@@ -48,7 +48,8 @@ export function handleUser(user) {
 }
 
 function handlePic(img1 = "", img2 = ""){
-  return [...(img2.split(";")), ...(img1.split(";"))].filter((x) => {
+  const urls = [...(img2.split(";")), ...(img1.split(";"))]
+  return urls.filter((x) => {
     if(x != "") return true;
   });
 }

@@ -17,7 +17,7 @@ export class CenterImage extends Component {
     render(){
         const { loading, error } = this.state,
             { index, current, lazysrc, ...childProps } = this.props,
-            img = (<img onLoad={this.onImgLoad.bind(this)} src={lazysrc} {...childProps} />);
+            img = (<img onLoad={this.onImgLoad.bind(this)} alt={index} src={lazysrc} {...childProps} />);
 
         // init first image, others have been preloaded
         if( index === current ){ return img }

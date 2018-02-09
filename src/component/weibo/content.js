@@ -19,7 +19,7 @@ class Content extends Component {
       const pattern = /([^>]*)(<([a-z/][-a-z0-9_:.]*)[^>/]*(\/*)>)([^<]*)/g,
         nodes = [];
       let matchArr;
-      while ((matchArr = pattern.exec(text))) {
+      while((matchArr = pattern.exec(text))) {
         if (matchArr[1]) nodes.push(["text", matchArr[1]]);
         switch (matchArr[3]) {
           case "user":

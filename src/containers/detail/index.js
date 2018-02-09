@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
-import { getWeiBoDetail } from "../../api/weibo";
 import { getComments } from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
-import { handleWeibo } from "../../utils/class/weibo";
 import { Control } from "react-keeper";
+
+// import { getWeiBoDetail } from "../../api/weibo";
+// import { handleWeibo } from "../../utils/class/weibo";
 
 import Head from "./head";
 import Foot from "./foot";
@@ -15,9 +16,7 @@ import Scroll from "../../component/scroll/index";
 class Detail extends Component {
   constructor(props, context) {
     super(props, context);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(
-      this
-    );
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       weibo: Control.state.weibo || {},
       commentList: [],
@@ -72,7 +71,7 @@ class Detail extends Component {
           onReachBottom={this._getMoreComments.bind(this)}
           load_tip={isMore}
         >
-          <Weibo weibo={this.state.weibo} />
+          <Weibo weibo={weibo} />
           <div
             style={{
               backgroundColor: "rgb(240, 240, 240)",

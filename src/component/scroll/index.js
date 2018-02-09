@@ -78,6 +78,7 @@ class Scroll extends Component {
         className="wrapper">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517909301015&di=e5569ac662b38490d775e512d06bf3cb&imgtype=0&src=http%3A%2F%2Fwww.carmenor.com%2Fqqwebhimgs%2Fuploads%2Fbd4064715.jpg"
              ref={(refresh) => {this.refresh = refresh}}
+             alt=" "
              className="refresh" />
         {this.props.children}
         <div

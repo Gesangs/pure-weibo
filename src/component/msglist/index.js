@@ -8,9 +8,7 @@ import { handleCommentList } from "../../utils/class/comment";
 class MsgList extends Component {
   constructor(props, context) {
     super(props, context);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(
-      this
-    );
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       data: [],
       isMore: true

@@ -3,7 +3,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ListImg  from "./listimg";
 import Content from "./content";
 import {goToAny} from "../../router/route"
-import { Control } from "react-keeper";
 import "./weibo.css";
 
 
@@ -14,26 +13,20 @@ class Weibo extends Component {
   }
 
   goToUser(user, e) {
-    goToAny(() => {
-      Control.go(`/user/${user.id}`, { user })
-    }, e)
+    goToAny(`/user/${user.id}`, { user }, e)
   }
   goToDetail(weibo, e) {
-    goToAny(() => {
-      Control.go(`/detail/${weibo.id}`, { weibo })
-    }, e)
+    goToAny(`/detail/${weibo.id}`, { weibo }, e)
   }
   goToPost(id, e) {
-    goToAny(() => {
-      Control.go(`/post`, { id })
-    }, e)
+    goToAny(`/post`, { id }, e)
   }
   render() {
     const { weibo } = this.props;
     return (
       <div className="list" onClick={this.goToDetail.bind(this, weibo)}>
         <div className="listHead">
-          <img src={weibo.user.head_pic} className="listPic" onClick={this.goToUser.bind(this, weibo.user)} />
+          <img alt="head" src={weibo.user.head_pic} className="listPic" onClick={this.goToUser.bind(this, weibo.user)} />
           <div className="listNameS">
             <span className="listName" onClick={this.goToUser.bind(this, weibo.user)}>{weibo.user.name}</span>
             <div className="listSource">
