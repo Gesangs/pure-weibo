@@ -40,6 +40,7 @@ body, html{
   align-items: center;
   transition: all 0.4s ease;
   z-index: 3;
+  pointer-events: auto;
 }
 
 .Index .foot div {

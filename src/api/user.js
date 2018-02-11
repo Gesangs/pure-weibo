@@ -17,6 +17,7 @@ export function getAccess_token(Code) {
       const currentTime = new Date().getTime();
       const endTime = new Date(currentTime + time).toLocaleString().replace(/(\/|下午|上午|:| )/g, "");
       localStorage.setItem("endTime", endTime);
+      console.log("ss")
     });
 }
 

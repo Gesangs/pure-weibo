@@ -4,8 +4,8 @@ import { getUserWeiBo } from "../../api/weibo";
 import { handleWeiboList } from "../../utils/class/weibo";
 import { Control } from "react-keeper";
 
-import User from "./user/index";
-import AboutUser from "./aboutuser/index";
+import User from "../../component/userpage/user/index";
+import AboutUser from "../../component/userpage/aboutuser/index";
 import WeiboList from "../../component/weibolist";
 
 class UserPage extends Component {

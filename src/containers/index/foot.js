@@ -20,12 +20,10 @@ class Foot extends Component {
         });
       }
       goToPost(e){
-        goToAny(() => {
-            Control.go("/post", {
+        goToAny("/post", {
                 title: "发微博",
                 preText: "说点什么吧..."
-            })
-          }, e)
+            }, e)
       }
     render() {
         return(

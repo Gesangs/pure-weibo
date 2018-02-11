@@ -9,7 +9,7 @@ class HotPage extends Component {
     }
      render(){
          return(
-             <WeiboFlow getNewWeiBo={"getPublicWeiBo"} />
+             <WeiboFlow getNewWeiBo={"getPublicWeiBo"} apistr={"data.statuses"} />
          )
      }
 }

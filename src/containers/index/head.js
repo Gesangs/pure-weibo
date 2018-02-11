@@ -11,9 +11,7 @@ class Head extends Component {
   }
   goToUser(e) {
     const user = this.props.userinfo.userinfo;
-    goToAny(() => {
-      Control.go(`/user/${user.id}`,{user})
-    }, e)
+    goToAny(`/user/${user.id}`,{user}, e);
   }
   render() {
     return (

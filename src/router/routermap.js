@@ -16,7 +16,7 @@ import CommentByMe from "../containers/massage/comment_by_me"
 import CommentToMe from "../containers/massage/comment_to_me"
 
 import HotPage from "../containers/hotpage/index"
-
+import Favorites from "../containers/favoriteslist/index"
 import UserPage from "../containers/userpage/index";
 import Detail from "../containers/detail/index";
 import Post from "../component/postpage/post";
@@ -31,7 +31,7 @@ class RouterMap extends Component {
   }
 
   loginCheck(cb, props){
-    const current = new Date().getTime().toLocaleString().replace(/(\/|下午|:| )/g, "");
+    const current = new Date().getTime().toLocaleString().replace(/(\/|(上|下)午|:| )/g, "");
     const isover = Math.sign(endTime - Number.parseInt(current)) !== 1
     
     if(isover) {
@@ -60,6 +60,7 @@ class RouterMap extends Component {
             </Route>
             <Route component={UserPage} path="/user/:id" />
             <Route component={Detail} path="/detail/:id" />
+            <Route component={Favorites} path="/favorites" />
             <Route component={Post} path="/post" />
             <Route component={ImageZoom} path="/imageZoom" />
             <Route miss component={NotFound} />

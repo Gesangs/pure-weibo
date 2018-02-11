@@ -38,7 +38,19 @@ export function getUserWeiBo(uid) {
   return jsonp(url, data)
 }
 
+// 获取当前登录用户的收藏列表
+// http://open.weibo.com/wiki/2/favorites
+export function getFavoritesWeiBo(page = 1) {
+  const url = 'https://api.weibo.com/2/favorites.json';
 
+  const  data = {
+      access_token,
+      page,
+      count:10
+    }
+  
+  return jsonp(url, data)
+}
 
 
 // 返回最新的公共微博
