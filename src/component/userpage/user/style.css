@@ -37,7 +37,16 @@
 .User .userHeader .countNum{
     display: block;
     font-size: 13px;
-    margin: 15px 25px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px 20px;
+}
+.User .userHeader .favoritesBtn {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 10px;
+    float: right;
 }
 .User .userHeader .tabBar span {
     display: inline-block;

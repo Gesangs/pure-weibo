@@ -11,9 +11,9 @@ class WeiboList extends Component{
     const weiboList = this.props.weiboList;
     return(
       <div style={{ paddingTop: 1}}>
-        {weiboList.map((item, index) => (
-          <Weibo weibo={item} key={index} />
-        ))}
+        {weiboList.map((item, index) => 
+          item ? (<Weibo weibo={item} key={index} />) : ""
+        )}
       </div>
     )
   }

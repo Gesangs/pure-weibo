@@ -1,5 +1,5 @@
 import {jsonp} from './jsonp';
-import { access_token } from "../config/config"
+import { access_token, weiboCount } from "../config/config"
 import axios from 'axios'
 // 获取当前登录用户及其所关注（授权）用户的最新微博
 // http://open.weibo.com/wiki/2/statuses/home_timeline
@@ -9,7 +9,7 @@ export function getNewWeiBo(page = 1) {
   const  data = {
       access_token,
       page,
-      count:10
+      count:weiboCount
     }
   
   return jsonp(url, data)
@@ -46,12 +46,40 @@ export function getFavoritesWeiBo(page = 1) {
   const  data = {
       access_token,
       page,
-      count:10
+      count:weiboCount
     }
   
   return jsonp(url, data)
 }
 
+// 获取当前登录用户的收藏标签列表
+// http://open.weibo.com/wiki/2/favorites/tags
+export function getFavoritesTag(tid, page = 1) {
+  const url = 'https://api.weibo.com/2/favorites/tags.json';
+
+  const  data = {
+      access_token,
+      page,
+      tid,
+      count:weiboCount
+    }
+  
+  return jsonp(url, data)
+}
+
+// 根据标签获取当前登录用户该标签下的收藏列表
+// http://open.weibo.com/wiki/2/favorites/by_tags
+export function getFavoritesByTag(page = 1) {
+  const url = 'https://api.weibo.com/2/favorites/by_tags.json';
+
+  const  data = {
+      access_token,
+      page,
+      count:weiboCount
+    }
+  
+  return jsonp(url, data)
+}
 
 // 返回最新的公共微博
 // http://open.weibo.com/wiki/2/statuses/public_timeline
@@ -59,7 +87,8 @@ export function getPublicWeiBo(page = 1) {
   const url = 'https://api.weibo.com/2/statuses/public_timeline.json'
   const data = {
     access_token,
-    page
+    page,
+    count:weiboCount
   }
   return jsonp(url, data)
 }

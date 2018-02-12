@@ -60,7 +60,7 @@ class RouterMap extends Component {
             </Route>
             <Route component={UserPage} path="/user/:id" />
             <Route component={Detail} path="/detail/:id" />
-            <Route component={Favorites} path="/favorites" />
+            <Route cache component={Favorites} path="/favorites" />
             <Route component={Post} path="/post" />
             <Route component={ImageZoom} path="/imageZoom" />
             <Route miss component={NotFound} />

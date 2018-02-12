@@ -3,6 +3,7 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 import { getComments } from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
 import { Control } from "react-keeper";
+import {commnetCount} from "../../config/config"
 
 // import { getWeiBoDetail } from "../../api/weibo";
 // import { handleWeibo } from "../../utils/class/weibo";
@@ -44,7 +45,7 @@ class Detail extends Component {
       const data = res.data;
       this.setState({
         commentList: handleCommentList(data.comments),
-        isMore: data.total_number > 50
+        isMore: data.total_number > commnetCount
       });
     });
   }
@@ -56,7 +57,7 @@ class Detail extends Component {
       const commentList = handleCommentList(res.data.comments);
       this.setState({
         commentList: [...this.state.commentList, ...commentList],
-        isMore: res.data.total_number > page * 50
+        isMore: res.data.total_number > page * commnetCount
       });
       page++;
     });

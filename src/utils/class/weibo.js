@@ -58,6 +58,7 @@ export function handleContent(text) {
 }
 
 export function handleWeibo(weibo) {
+  if(weibo.deleted === "1") return
   return new Weibo({
     id: weibo.id,
     mid: weibo.mid,

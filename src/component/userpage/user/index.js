@@ -15,8 +15,11 @@ class User extends Component {
   goToImageZoom(imgs, e) {
     goToAny("/imageZoom", { imagelist: imgs }, e)
   }
+  goToFavorites(e) {
+    goToAny("/favorites", {}, e)
+  }
   render() {
-    const userinfo = this.props.userinfo;
+    const {userinfo, isUserId} = this.props;
     return (
       <div>
         {userinfo ? (
@@ -38,6 +41,9 @@ class User extends Component {
                 <span>关注 {userinfo.friends_count}</span>
                  {" | "}
                 <span>粉丝 {userinfo.followers_count}</span>
+                {isUserId
+                 ? <div className="favoritesBtn" onClick={this.goToFavorites.bind(this)}>我的收藏</div>
+                 : ""}
               </span>
               <span />
               <div className="tabBar">

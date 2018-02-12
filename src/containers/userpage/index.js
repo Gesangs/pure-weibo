@@ -24,7 +24,7 @@ class UserPage extends Component {
     if (this.isUserId) {
       getUserWeiBo(id).then(res => {
         this.setState({
-          weiboList: handleWeiboList(res.data.statuses) || false
+          weiboList: handleWeiboList(res.data.statuses)
         });
       });
     }
@@ -39,7 +39,7 @@ class UserPage extends Component {
     const { weiboList, userinfo, showList } = this.state;
     return (
       <div className="UserPage">
-        <User userinfo={userinfo} SwitchTab={this.SwitchTab.bind(this)} />
+        <User userinfo={userinfo} isUserId={this.isUserId} SwitchTab={this.SwitchTab.bind(this)} />
         {showList ? (
           <WeiboList weiboList={weiboList} />
         ) : (

@@ -1,0 +1,30 @@
+.favorite{
+    padding: 50px 0;
+}
+.favorite .Head {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 51px;
+    background-color: #3498db;
+    box-shadow: 0 2px 4px 0 #3498db;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 4;
+}
+.favorite .Head div {
+    margin-left: 20px;
+    color: #fff;
+}
+.favorite .Tags{
+    display: inline-block;
+    font-size: 13px;
+    background-color: rgb(220,220,220);
+    border-radius: 10px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    min-width: 25px;
+    margin: 15px 0 0 15px;
+}

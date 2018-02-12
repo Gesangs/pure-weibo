@@ -14,30 +14,26 @@ class WeiboFlow extends Component {
       weiboList: [],
     };
     this.fun = null;
-    this.apistr = null;
   }
   componentWillMount() {
     this.fun = api[this.props.getNewWeiBo];
-    this.apistr = this.props.apistr;
     this._getNewWeiBo();
   }
 
   _getNewWeiBo() {
     this.fun().then(res => {
       this.setState({
-        weiboList: handleWeiboList(res[this.apistr])
+        weiboList: handleWeiboList(res.data.statuses)
       });
-      console.log(res[this.apistr]);
     });
   }
   _getMoreWeiBo() {
     let page = 2;
     return this.fun(page++).then(res => {
-      const weiboList = handleWeiboList(res[this.apistr]);
+      const weiboList = handleWeiboList(res.data.statuses);
       this.setState({
         weiboList: [...this.state.weiboList, ...weiboList],
       });
-      console.log(this.state.weiboList);
     });
   }
 

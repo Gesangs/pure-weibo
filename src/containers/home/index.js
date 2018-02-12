@@ -9,7 +9,7 @@ class Home extends Component {
     }
      render(){
          return(
-             <WeiboFlow getNewWeiBo={"getNewWeiBo"} apistr={"data.statuses"} />
+            <WeiboFlow getNewWeiBo={"getNewWeiBo"} />
          )
      }
 }

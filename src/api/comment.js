@@ -1,5 +1,6 @@
 import {jsonp, param} from './jsonp'
 import { access_token } from "../config/config"
+import {commnetCount} from "../config/config"
 import axios from 'axios'
 // 根据微博ID返回某条微博的评论列表
 // http://open.weibo.com/wiki/2/comments/show
@@ -9,6 +10,7 @@ export function getComments(id, page = 1) {
     const data = {
         access_token,
         id,
+        count: commnetCount,
         page
     }
     return jsonp(url, data)
@@ -33,7 +35,8 @@ export function getAtMeComments(page = 1) {
   const url = 'https://api.weibo.com/2/comments/mentions.json';
   const postData = {
       access_token,
-      page
+      page,
+      count: commnetCount,
   }
   const data = handleurl(url, postData)
   return axios.get('http://query.yahooapis.com/v1/public/yql',{
@@ -48,7 +51,8 @@ export function getCommentsByMe(page = 1) {
   const url = 'https://api.weibo.com/2/comments/by_me.json';
   const postData = {
       access_token,
-      page
+      count: commnetCount,
+      page,
   }
   const data = handleurl(url, postData)
   return axios.get('http://query.yahooapis.com/v1/public/yql',{
@@ -63,6 +67,7 @@ export function getCommentsToMe(page = 1) {
   const url = 'https://api.weibo.com/2/comments/to_me.json';
   const postData = {
       access_token,
+      count: commnetCount,
       page
   }
   const data = handleurl(url, postData)
@@ -77,6 +82,7 @@ export function getAtMeWeibo(page = 1) {
   const url = 'https://api.weibo.com/2/statuses/mentions.json';
   const postData = {
       access_token,
+      count: commnetCount,
       page
   }
   const data = handleurl(url, postData)
