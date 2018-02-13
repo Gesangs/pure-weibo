@@ -1,5 +1,5 @@
 import { handleUser } from "./user";
-import { handleContent } from "./weibo";
+import { handleContent, handleWeibo } from "./weibo";
 import { format } from "../date-utils";
 export default class Comment {
   constructor({
@@ -8,7 +8,8 @@ export default class Comment {
     create_time, // 注册时间
     source, // 来自
     content,
-    reply_content
+    reply_content,
+    status,
   }) {
     this.id = id;
     this.user = user;
@@ -16,6 +17,7 @@ export default class Comment {
     this.create_time = create_time;
     this.content = content;
     this.reply_content = reply_content;
+    this.status = status
   }
 }
 
@@ -26,6 +28,7 @@ export function handleComment(comment) {
     source: comment.source.replace(/<[^>]+>/g, ""),
     create_time: format(comment.created_at),
     content: handleContent(comment.text),
+    status: handleWeibo(comment.status),
     reply_content: comment.reply_comment
       ? handleContent(comment.reply_comment.text)
       : null

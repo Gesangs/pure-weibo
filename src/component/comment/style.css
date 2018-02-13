@@ -19,3 +19,9 @@
   padding: 5px 10px;
   line-height: 25px;
 }
+.commentList .reply{
+  font-size: 12px;
+  line-height: 36px;
+  position: absolute;
+  right: 20px;
+}

@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ListImg  from "./listimg";
 import Content from "./content";
 import {goToAny} from "../../router/route"
-import "./weibo.css";
+import "./style.css";
 
 
 class Weibo extends Component {
@@ -38,7 +38,7 @@ class Weibo extends Component {
         </div>
         <div className="listContent">
           <Content con={weibo.content} />
-          {weibo.pic_urls.length ? <ListImg imgs={weibo.pic_urls} /> : ""}
+          {weibo.pic_urls ? <ListImg imgs={weibo.pic_urls} /> : ""}
         </div>
         {/* 转发的微博 */}
         {weibo.retweeted_status ? (
@@ -48,7 +48,7 @@ class Weibo extends Component {
                 <a onClick={this.goToUser.bind(this, weibo.retweeted_status.user)}>@{weibo.retweeted_status.user.name}</a>:{" "}
                 <Content con={weibo.retweeted_status.content} />
               </div>
-              {weibo.retweeted_status.pic_urls.length ? (
+              {weibo.retweeted_status.pic_urls ? (
                 <ListImg imgs={weibo.retweeted_status.pic_urls} />
               ) : (
                 ""

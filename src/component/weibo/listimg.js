@@ -4,12 +4,7 @@ import { goToAny } from "../../router/route";
 class ListImg extends Component {
   constructor(props, context) {
     super(props, context);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(
-      this
-    );
-    this.state = {
-      isFull: false
-    };
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
   goToImageZoom(imgs, index, e) {
     goToAny("/imageZoom", { imagelist: imgs, current: index }, e)

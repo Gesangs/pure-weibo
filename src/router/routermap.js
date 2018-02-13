@@ -6,7 +6,7 @@ import { URL, endTime } from "../config/config";
 import * as scrollutil from "../utils/scroll-position" 
 
 import Root from "../containers/index"
-import Index from "../containers/index/index.js";
+import Index from "../containers/index/index";
 import Home from "../containers/home/index"
 
 import Massage from "../containers/massage/index"
@@ -21,6 +21,7 @@ import UserPage from "../containers/userpage/index";
 import Detail from "../containers/detail/index";
 import Post from "../component/postpage/post";
 import ImageZoom from "../component/imagezoom/index"
+import Dialog from "../component/dialog/index"
 import NotFound from "../containers/404";
 import { Number } from "core-js";
 
@@ -31,7 +32,7 @@ class RouterMap extends Component {
   }
 
   loginCheck(cb, props){
-    const current = new Date().getTime().toLocaleString().replace(/(\/|(上|下)午|:| )/g, "");
+    const current = (new Date()).getTime();
     const isover = Math.sign(endTime - Number.parseInt(current)) !== 1
     
     if(isover) {

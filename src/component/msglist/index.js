@@ -5,6 +5,8 @@ import Loading from "../loading/index"
 import Comment from "../comment/index";
 import * as api from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
+import { handleWeiboList } from "../../utils/class/weibo"
+import { commnetCount } from "../../config/config"
 class MsgList extends Component {
   constructor(props, context) {
     super(props, context);
@@ -13,6 +15,7 @@ class MsgList extends Component {
       data: [],
       isMore: true
     };
+    this.handlefun = this.props.getNewData === "getAtMeWeibo" ? handleWeiboList : handleCommentList
   }
   componentDidMount() {
     this._getNewData();
@@ -28,8 +31,8 @@ class MsgList extends Component {
         });
       } else {
         this.setState({
-          data: handleCommentList(list),
-          isMore: data.total_number > 50
+          data: this.handlefun(list),
+          isMore: data.total_number > commnetCount
         });
       }
     });
@@ -39,10 +42,10 @@ class MsgList extends Component {
     const fun = api[this.props.getNewData];
     return fun(page).then(res => {
       const data = res.data.query.results.json;
-      const list = data.comments || data.status;
+      const list = data.comments || data.statuses;
       this.setState({
-        data: [...this.state.comments, ...handleCommentList(list)],
-        isMore: data.total_number > 50 * page
+        data: [...this.state.data, ...this.handlefun(list)],
+        isMore: data.total_number > commnetCount * page
       });
       page++;
     });

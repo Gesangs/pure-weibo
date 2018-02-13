@@ -15,7 +15,7 @@ export function getAccess_token(Code) {
       // 计算access_token过期时间
       const time = data.expires_in;
       const currentTime = new Date().getTime();
-      const endTime = new Date(currentTime + time).toLocaleString().replace(/(\/|下午|上午|:| )/g, "");
+      const endTime = currentTime + time;
       localStorage.setItem("endTime", endTime);
       console.log("ss")
     });

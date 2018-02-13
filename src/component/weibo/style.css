@@ -109,9 +109,10 @@ a {
 
 .listFoot div {
   display: inline-block;
-  width: 32%;
+  width: 20%;
   height: 40px;
   color: rgb(124, 124, 124);
   font-size: 13px;
   line-height: 40px;
+  text-align: center;
 }
