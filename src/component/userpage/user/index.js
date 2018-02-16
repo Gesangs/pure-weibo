@@ -21,7 +21,7 @@ class User extends Component {
   render() {
     const {userinfo, isUserId} = this.props;
     return (
-      <div>
+      <React.Fragment>
         {userinfo ? (
           <div className="User">
             <div className="headBar" onClick={(e) => {goBack(e)}}>
@@ -64,7 +64,7 @@ class User extends Component {
         ) : (
           ""
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }

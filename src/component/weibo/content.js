@@ -38,7 +38,7 @@ class Content extends Component {
             nodes.push(["url", matchArr[5]]);
             break;
           default:
-            nodes.push(["text", matchArr[5]]);
+            matchArr[5] != false ? nodes.push(["text", matchArr[5]]) : null;
             break;
         }
       }
@@ -50,22 +50,20 @@ class Content extends Component {
         <div className="Content">
           {content.map((item, index) => {
             return (
-              <span key={index}>
-                {item[0] === "user" ? (
-                  <a>{item[1]}</a>
+                item[0] === "user" ? (
+                  <a key={index}>{item[1]}</a>
                 ) : item[0] === "all" ? (
-                  <a>{item[1]}</a>
+                  <a key={index}>{item[1]}</a>
                 ) : item[0] === "icon" ? (
-                 item[2] ? <img alt={item[1]} src={item[2]} style={{ width: 18, height: 18 }} /> : item[1]
+                 item[2] ? <img alt={item[1]} key={index} src={item[2]} style={{ width: 18, height: 18 }} /> : item[1]
                 ) : item[0] === "text" ? (
                   item[1]
                 ) : item[0] === "topic" ? (
-                  <a>{item[1]}</a>
+                  <a key={index}>{item[1]}</a>
                 ) : item[0] === "url" ? (
-                  <a href={item[1]}> 查看原链接</a>
-                ) : null}
-              </span>
-            );
+                  <a href={item[1]} key={index}> 查看原链接</a>
+                ) : null
+             );
           })}
         </div>
       );

@@ -25,6 +25,7 @@ class MsgList extends Component {
     fun().then(res => {
       const data = res.data.query.results.json;
       const list = data.comments || data.statuses;
+      console.log(list)
       if (!data.total_number) {
         this.setState({
           isMore: false
@@ -52,6 +53,7 @@ class MsgList extends Component {
   }
   render() {
     const { data } = this.state;
+    
     return (
       <Scroll
         onReachBottom={this._getMoreData.bind(this)}

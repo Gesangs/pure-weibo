@@ -5,10 +5,12 @@ import { goToAny } from "../../router/route";
 import {Control} from "react-keeper"
 import "./style.css";
 class Head extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     path: Control.path
+  //   }
+  // }
   goToUser(e) {
     const user = this.props.userinfo.userinfo;
     goToAny(`/user/${user.id}`,{user}, e);
@@ -19,7 +21,9 @@ class Head extends Component {
           <div onClick={this.goToUser.bind(this)}>
             用户
           </div>
-          <div>全部微博</div>
+          <div>
+          全部微博
+          </div>
         </div>
     );
   }

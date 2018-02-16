@@ -14,9 +14,8 @@ class ListImg extends Component {
     return (
       <div className="listImg">
         {imgs.map((item, index) => {
-          const imgUrl = item.thumbnail_pic
-            .replace(/wx1\./, "wx2.")
-            .replace(/thumbnail/, "orj360");
+          let imgUrl = `${item.thumbnail_pic || item}`.replace('\/thumbnail\/', "/orj360/")
+          .replace(/wx\d\./, "wx2.");
           return (
             <div
               className="weiboImg"

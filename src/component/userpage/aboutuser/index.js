@@ -16,14 +16,14 @@ class AboutUser extends Component {
       { lable: "注册时间", content: userinfo.create_time || "无" }
     ];
     return (
-      <div>
+      <React.Fragment>
         {list.map((item, index) => (
           <div className="userinfo" key={index}>
             <span className="infoLable">{item.lable}</span>
             <p className="infoContent">{item.content}</p>
           </div>
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -7,10 +7,10 @@ import { Key, reUri } from "../../config/config"
 import "./style.css";
 
 class Foot extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-      }
+    // constructor() {
+    //     super();
+    //     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    //   }
     _logout() {
         Logout().then((res) => {
             Logoutt().then((res) => {

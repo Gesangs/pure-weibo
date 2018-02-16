@@ -66,7 +66,7 @@ export function handleWeibo(weibo) {
     time: format(weibo.created_at),
     source: weibo.source.replace(/<[^>]+>/g, ""),
     content: handleContent(weibo.text),
-    pic_urls: weibo.pic_urls,
+    pic_urls: weibo.pic_urls || [weibo.original_pic],
     favorited: weibo.favorited,
     reposts_count: weibo.reposts_count,
     comments_count: weibo.comments_count,
