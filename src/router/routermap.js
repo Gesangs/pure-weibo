@@ -39,8 +39,9 @@ class RouterMap extends Component {
       const Code = window.location.href.split("=")[1];
       if (!Code) {
         window.location.href = URL;
+      } else {
+        getAccess_token(Code.replace(/#\//g, ""))
       }
-      getAccess_token(Code.replace(/#\//g, ""));
     }
     cb();
   }

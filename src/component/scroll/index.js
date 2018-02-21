@@ -30,7 +30,7 @@ class Scroll extends Component {
   // 下拉刷新
   _onPullDownRefresh() {
     clearTimeout(this.timer);
-    this.props.onPullDownRefresh();
+    this.props.onPullDownRefresh && this.props.onPullDownRefresh();
     this.timer = setTimeout(() => {
       this.refresh.style.transform = `translate3d(-50%,-120px,0)`;
       this.islock = false;
@@ -63,7 +63,7 @@ class Scroll extends Component {
     }
   }
   _handleTouchEnd(e) {
-    if(this.deltaY > 10) this._onReachBottom();
+    this._onReachBottom();
     this.refresh.style.transition = `all 0.6s ease`;
     if (this.deltaY !== 100) {
       this.refresh.style.transform = `translate3d(-50%,-120px,0)`;

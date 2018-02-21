@@ -26,7 +26,7 @@ class Post extends Component{
     Submit(){
         const value = this.state.value
         const id = Control.state.id;
-        api.create_comment(value, id).then((res) => {
+        api.reply_comment(value, id).then((res) => {
             console.log(res);
         })
     }
