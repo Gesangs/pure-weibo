@@ -11,16 +11,15 @@ class ListImg extends Component {
   }
   render() {
     const imgs = this.props.imgs;
+    console.log(imgs)
     return (
       <div className="listImg">
         {imgs.map((item, index) => {
-          let imgUrl = `${item.thumbnail_pic || item}`.replace('\/thumbnail\/', "/orj360/")
-          .replace(/wx\d\./, "wx2.");
           return (
             <div
               className="weiboImg"
               key={index}
-              style={{ backgroundImage: `url(${imgUrl})` }}
+              style={{ backgroundImage: `url(${item})` }}
               onClick={this.goToImageZoom.bind(this, imgs, index)}
             />
           );

@@ -55,9 +55,9 @@ class Weibo extends Component {
               )}
             </div>
             <div className="retFoot">
-              {weibo.retweeted_status.reposts_count} |{" "}
-              {weibo.retweeted_status.comments_count} |{" "}
-              {weibo.retweeted_status.attitudes_count}
+              转发{weibo.retweeted_status.reposts_count} |{" "}
+              评论{weibo.retweeted_status.comments_count} |{" "}
+              点赞{weibo.retweeted_status.attitudes_count}
             </div>
           </div>
         ) : (

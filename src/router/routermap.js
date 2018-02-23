@@ -36,6 +36,7 @@ class RouterMap extends Component {
     const isover = Math.sign(endTime - Number.parseInt(current)) !== 1
     
     if(isover) {
+      localStorage.clear();
       const Code = window.location.href.split("=")[1];
       if (!Code) {
         window.location.href = URL;

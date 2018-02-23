@@ -15,19 +15,9 @@ class ImageZoom extends Component {
     componentWillMount(){
         const List = [];
         const imagelist = Control.state.imagelist;
-        if(imagelist[0].thumbnail_pic) {
-            imagelist.map((item) =>{
-                let imgurl = item.thumbnail_pic.replace("thumbnail", "large")
-                List.push(imgurl);
-            })
-            this.setState({
-                imglist: List
-            })
-        } else {
-            this.setState({
-                imglist: imagelist
-            })
-        }
+        this.setState({
+            imglist: imagelist
+        })
     }
     close() {
         Control.go(-1);

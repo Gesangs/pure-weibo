@@ -39,10 +39,10 @@ function handleRetWeibo(weibo) {
     id: weibo.id,
     user: handleUser(weibo.user),
     content: handleContent(weibo.text),
-    pic_urls: weibo.pic_urls,
-    reposts_count: `转发${weibo.reposts_count}`,
-    comments_count: `评论${weibo.comments_count}`,
-    attitudes_count: `点赞${weibo.attitudes_count}`
+    pic_urls: handleImgUrl(weibo),
+    reposts_count: weibo.reposts_count,
+    comments_count: weibo.comments_count,
+    attitudes_count: weibo.attitudes_count
   });
 }
 export function handleContent(text) {
@@ -58,6 +58,7 @@ export function handleContent(text) {
 }
 
 export function handleWeibo(weibo) {
+  console.log(weibo)
   if(weibo.deleted === "1") return
   return new Weibo({
     id: weibo.id,
@@ -66,7 +67,7 @@ export function handleWeibo(weibo) {
     time: format(weibo.created_at),
     source: weibo.source.replace(/<[^>]+>/g, ""),
     content: handleContent(weibo.text),
-    pic_urls: weibo.pic_urls || [weibo.original_pic],
+    pic_urls: handleImgUrl(weibo),
     favorited: weibo.favorited,
     reposts_count: weibo.reposts_count,
     comments_count: weibo.comments_count,
@@ -85,4 +86,21 @@ export function handleWeiboList(weibos) {
     List.push(weibo);
   });
   return List;
+}
+
+function handleImgUrl(weibo){
+  const arr = [];
+  if(weibo.pic_urls && weibo.pic_urls[0]) {
+    
+    weibo.pic_urls.map((item) => {
+      arr.push(item.thumbnail_pic.replace('\/thumbnail\/', "/orj360/").replace(/wx\d\./, "wx2."))
+    })
+  } else {
+    if(weibo.original_pic){
+      arr.push(weibo.original_pic.replace('\/thumbnail\/', "/orj360/").replace(/wx\d\./, "wx2."))
+    } else {
+      return null;
+    }
+  }
+  return arr;
 }
