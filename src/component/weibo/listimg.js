@@ -10,8 +10,7 @@ class ListImg extends Component {
     goToAny("/imageZoom", { imagelist: imgs, current: index }, e)
   }
   render() {
-    const imgs = this.props.imgs;
-    console.log(imgs)
+    const { imgs } = this.props;
     return (
       <div className="listImg">
         {imgs.map((item, index) => {

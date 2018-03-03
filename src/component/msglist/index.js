@@ -7,12 +7,13 @@ import * as api from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
 import { handleWeiboList } from "../../utils/class/weibo"
 import { commnetCount } from "../../config/config"
+
 class MsgList extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      data: [],
+      data: "",
       isMore: true
     };
     this.handlefun = this.props.getNewData === "getAtMeWeibo" ? handleWeiboList : handleCommentList
@@ -25,9 +26,10 @@ class MsgList extends Component {
     fun().then(res => {
       const data = res.data.query.results.json;
       const list = data.comments || data.statuses;
-      console.log(list)
+      console.log(data);
       if (!data.total_number) {
         this.setState({
+          data: [],
           isMore: false
         });
       } else {
@@ -53,13 +55,11 @@ class MsgList extends Component {
   }
   render() {
     const { data } = this.state;
-    
     return (
       <Scroll
         onReachBottom={this._getMoreData.bind(this)}
-        load_tip={this.state.isMore}
-      >
-        {data.length ? <Comment commentList={data} /> : <Loading />}
+        load_tip={this.state.isMore}>
+        {data ? <Comment commentList={data} /> : <Loading />}
       </Scroll>
     );
   }
