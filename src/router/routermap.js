@@ -21,21 +21,19 @@ import UserPage from "../containers/userpage/index";
 import Detail from "../containers/detail/index";
 import Post from "../component/postpage/post";
 import ImageZoom from "../component/imagezoom/index"
-import Dialog from "../component/dialog/index"
 import NotFound from "../containers/404";
-import { Number } from "core-js";
 
 class RouterMap extends Component {
   constructor() {
     super();
-    this.homescroll = 0;
   }
 
   loginCheck(cb, props){
     const current = (new Date()).getTime();
-    const isover = Math.sign(endTime - Number.parseInt(current)) !== 1
+    const isover = Math.sign(+endTime - Number.parseInt(current)) !== 1
     
     if(isover) {
+      console.log(isover)
       localStorage.clear();
       const Code = window.location.href.split("=")[1];
       if (!Code) {

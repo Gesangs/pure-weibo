@@ -130,13 +130,14 @@ apiRoutes.get('/shouquan', function (req, res) {
             console.log(body);
         } else {
             console.log(response.statusCode);
+            console.log(body);
         }
     });
 });
 
 app.use('/api', apiRoutes);
-
-var port = 3001;
+app.use(express.static('./build'));
+var port = 3000;
 
 module.exports = app.listen(port, function (err) {
     if (err) {

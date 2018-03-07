@@ -6,18 +6,16 @@ class Dialog extends Component{
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = {
+      visiable: true,
+    }
   }
   render() {
-    return(
-        <div className="dialogBag">
-            <div className="dialog">
-                <div>收藏</div>
-                <div>查看原微博</div>
-                <div>回复</div>
-                <div>转发</div>
-            </div>
-        </div>
-    )
+    const { visiable } = this.state;
+    return 
+      { visiable ? <div className="dialog">
+        {}
+      </div> : ""}
   }
 }
 

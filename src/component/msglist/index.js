@@ -26,7 +26,6 @@ class MsgList extends Component {
     fun().then(res => {
       const data = res.data.query.results.json;
       const list = data.comments || data.statuses;
-      console.log(data);
       if (!data.total_number) {
         this.setState({
           data: [],

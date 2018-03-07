@@ -87,16 +87,19 @@ export function handleWeiboList(weibos) {
   return List;
 }
 
+function replaceUrl(url){
+  return url.replace('\/thumbnail\/', "/orj360/").replace(/wx\d\./, "wx2.");
+}
+
 function handleImgUrl(weibo){
   const arr = [];
   if(weibo.pic_urls && weibo.pic_urls[0]) {
-    
     weibo.pic_urls.map((item) => {
-      arr.push(item.thumbnail_pic.replace('\/thumbnail\/', "/orj360/").replace(/wx\d\./, "wx2."))
+      arr.push(replaceUrl(item.thumbnail_pic))
     })
   } else {
     if(weibo.original_pic){
-      arr.push(weibo.original_pic.replace('\/thumbnail\/', "/orj360/").replace(/wx\d\./, "wx2."))
+      arr.push(replaceUrl(weibo.original_pic))
     } else {
       return null;
     }

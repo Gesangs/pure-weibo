@@ -3,6 +3,7 @@ export const scrollDisplay = () => {
   let currentTop = 0;
   const head = document.querySelector(".head");
   const foot = document.querySelector(".foot");
+  if(head && foot)
   window.onscroll = function() {
     const qiuqiu = document.querySelector(".qiuqiu");
     const scrollY = window.scrollY;

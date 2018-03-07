@@ -38,7 +38,7 @@ class WeiboFlow extends Component {
   }
 
   render() {
-    const weiboList = this.state.weiboList;
+    const { weiboList } = this.state;
     return (
       <div className="weiboList">
         <Scroll
