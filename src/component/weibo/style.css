@@ -65,26 +65,6 @@ a {
   background-position: top;
 }
 
-.zoomBack {
-  position: fixed;
-  background-color: #000;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  z-index: 100;
-}
-
-
-.imgZoom {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  display: inline-block;
-}
 
 .retWeibo {
   box-sizing: border-box;
@@ -105,14 +85,21 @@ a {
   width: 100%;
   box-sizing: border-box;
   padding-left: 1px;
+  display: flex;
 }
 
 .listFoot div {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 20%;
   height: 40px;
   color: rgb(124, 124, 124);
   font-size: 11px;
-  line-height: 40px;
-  text-align: center;
+  /* position: relative; */
+}
+
+.listFoot div > .iconfont{
+  margin-right: 6px;
+  position: relative;
+  top: -3px;
 }

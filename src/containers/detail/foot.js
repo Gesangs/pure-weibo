@@ -10,9 +10,9 @@ class Foot extends Component {
     render() {
         return(
             <div className="detailFoot">
-               <span>笔</span>
-               <div>说点什么吧...</div>
-             </div>
+               <span className="iconfont icon-tianxie"></span>
+               <span>说点什么吧...</span>
+            </div>
         )
     }
 }

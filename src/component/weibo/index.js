@@ -19,7 +19,11 @@ class Weibo extends Component {
     goToAny(`/detail/${weibo.id}`, { weibo }, e)
   }
   goToPost(id, e) {
-    goToAny(`/post`, { id }, e)
+    goToAny(`/post`, {
+      id,
+      title: "发评论",
+      preText: "说点什么吧..."
+    }, e)
   }
   render() {
     const { weibo } = this.props;
@@ -64,9 +68,18 @@ class Weibo extends Component {
           ""
         )}
         <div className="listFoot">
-          <div>{weibo.reposts_count}</div>
-          <div onClick={this.goToPost.bind(this, weibo.id)}>{weibo.comments_count}</div>
-          <div>{weibo.attitudes_count}</div>
+          <div>
+            <span className="iconfont icon-zhuanfa"></span>
+            {weibo.reposts_count}
+          </div>
+          <div onClick={this.goToPost.bind(this, weibo.id)}>
+            <span className="iconfont icon-comment"></span>
+            {weibo.comments_count}
+          </div>
+          <div>
+            <span className="iconfont icon-dianzan"></span>
+            {weibo.attitudes_count}
+          </div>
         </div>
       </div>
     );

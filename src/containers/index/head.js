@@ -19,10 +19,10 @@ class Head extends Component {
     return (
         <div className="head">
           <div onClick={this.goToUser.bind(this)}>
-            用户
+            <span className="iconfont icon-user"></span>
           </div>
           <div>
-          全部微博
+            {this.props.headText}
           </div>
         </div>
     );

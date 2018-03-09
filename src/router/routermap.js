@@ -33,8 +33,7 @@ class RouterMap extends Component {
     const isover = Math.sign(+endTime - Number.parseInt(current)) !== 1
     
     if(isover) {
-      console.log(isover)
-      localStorage.clear();
+      console.log("aa")
       const Code = window.location.href.split("=")[1];
       if (!Code) {
         window.location.href = URL;
@@ -50,7 +49,7 @@ class RouterMap extends Component {
         <div>
           <Route component={Root} path="/" enterFilter={ this.loginCheck.bind(this) }>
             <Route index component={Index} path="/index">
-              <Route index cache component={Home} path="/home" />
+              <Route index cache component={Home} />
               <Route component={Massage} path="/massage">
                 <Route index cache='parent' component={CommentToMe} />
                 <Route cache='parent' component={AtMeComment} path="/at_me_comment" />

@@ -16,6 +16,9 @@ class Index extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = {
+      headText: "全部微博"
+    }
   }
   componentDidMount() {
     getEmotions().then(res => {
@@ -29,12 +32,17 @@ class Index extends Component {
       });
     })
   }
+  setHeadText(text){
+    this.setState({
+      headText: text
+    })
+  }
   render() {
     return (
       <div className="Index">
-        <Head />
+        <Head headText={this.state.headText} />
         {this.props.children}
-        <Foot />
+        <Foot setHeadText={this.setHeadText.bind(this)} />
       </div>
     );
   }

@@ -41,7 +41,9 @@ class Comment extends Component {
                             </div>
                             {isUserId
                              ? ""
-                             : <div className="reply" onClick={this.goToReply.bind(this, item.user.name)}>回复</div>
+                             : <div className="reply" onClick={this.goToReply.bind(this, item.user.name)}>
+                                  <span className="iconfont icon-comment"></span>
+                               </div>
                             }
                         </div>
                         <Content con={item.content} />

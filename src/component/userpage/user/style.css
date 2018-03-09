@@ -10,6 +10,9 @@
     line-height: 50px;
     color: #fff;
 }
+.User .headBar .iconfont {
+    margin-left: 17px;
+}
 .User .userHeader{
     width: 100%;
 }
@@ -42,7 +45,6 @@
     margin: 5px 20px;
 }
 .User .userHeader .favoritesBtn {
-    display: inline-block;
     border: 1px solid black;
     border-radius: 5px;
     padding: 0 10px;

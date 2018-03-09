@@ -44,8 +44,13 @@ body, html{
 }
 
 .Index .foot div {
-  width: 30%;
+  flex: 1;
   text-align: center;
+  color: rgb(153, 153, 153);
+}
+
+.Index .foot .activeFoot .iconfont {
+  color: #3498db;
 }
 
 .qiuqiu {
@@ -60,3 +65,12 @@ body, html{
   transition: all 0.5s ease;
   z-index: 2;
 }
+
+.qiuqiu .iconfont{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  color: white;
+}
+

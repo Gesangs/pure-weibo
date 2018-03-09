@@ -11,7 +11,7 @@ class Head extends Component {
         return(
             <div style={{ top: 0 }} className="detailHead">
                <div onClick={(e) => {goBack(e)}}>
-                 返回
+                <span className="iconfont icon-fanhui"></span>
                </div>
                <div>微博正文</div>
              </div>

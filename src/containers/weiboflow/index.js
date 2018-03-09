@@ -28,7 +28,7 @@ class WeiboFlow extends Component {
     });
   }
   _getMoreWeiBo() {
-    let page = 2;
+    var page = 2;
     return this.fun(page++).then(res => {
       const weiboList = handleWeiboList(res.data.statuses);
       this.setState({

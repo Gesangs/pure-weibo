@@ -100,9 +100,15 @@ class Post extends Component{
                     </div>
                 </div>
                 <div className="postFoot">
-                    <div onClick={this.selectImg.bind(this)}>图片</div>
-                    <div>表情</div>
-                    <div onClick={this.Submit.bind(this)}>发布</div>
+                    <div onClick={this.selectImg.bind(this)}>
+                        <span className="iconfont icon-tupian"></span>
+                    </div>
+                    <div>
+                        <span className="iconfont icon-biaoqing"></span>
+                    </div>
+                    <div onClick={this.Submit.bind(this)} id="fabu">
+                        <span className="iconfont icon-fabu"></span>
+                    </div>
                 </div>
             </div>
         )

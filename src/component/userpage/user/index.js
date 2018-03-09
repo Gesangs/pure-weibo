@@ -25,7 +25,7 @@ class User extends Component {
         {userinfo ? (
           <div className="User">
             <div className="headBar" onClick={(e) => {goBack(e)}}>
-              返回
+              <span className="iconfont icon-fanhui"></span>
             </div>
             <div className="userHeader">
               <div
