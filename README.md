@@ -31,7 +31,7 @@
 
 #### 项目预览
 
-![](https://raw.githubusercontent.com/Gesangs/pure-weibo/master/UI/1.png)
-![](https://raw.githubusercontent.com/Gesangs/pure-weibo/master/UI/2.png)
-![](https://raw.githubusercontent.com/Gesangs/pure-weibo/master/UI/3.png)
-![](https://raw.githubusercontent.com/Gesangs/pure-weibo/master/UI/4.png)
+![](https://github.com/Gesangs/pure-weibo/blob/master/UI/1.jpg?raw=true)
+![](https://github.com/Gesangs/pure-weibo/blob/master/UI/2.jpg?raw=true)
+![](https://github.com/Gesangs/pure-weibo/blob/master/UI/3.jpg?raw=true)
+![](https://github.com/Gesangs/pure-weibo/blob/master/UI/4.jpg?raw=true)
