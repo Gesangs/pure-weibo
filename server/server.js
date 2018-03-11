@@ -145,7 +145,7 @@ apiRoutes.get('/shouquan', function(req, res) {
 
 
 app.use('/api', apiRoutes)
-app.use(express.static('./build'))
+// app.use(express.static('./build'))
 var port = 3001;
 
 module.exports = app.listen(port, function(err) {

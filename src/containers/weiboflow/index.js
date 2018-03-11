@@ -14,6 +14,7 @@ class WeiboFlow extends Component {
       weiboList: [],
     };
     this.fun = null;
+    this.page = 2;
   }
   componentWillMount() {
     this.fun = api[this.props.getNewWeiBo];
@@ -28,12 +29,12 @@ class WeiboFlow extends Component {
     });
   }
   _getMoreWeiBo() {
-    var page = 2;
-    return this.fun(page++).then(res => {
+    this.fun(this.page).then(res => {
       const weiboList = handleWeiboList(res.data.statuses);
       this.setState({
         weiboList: [...this.state.weiboList, ...weiboList],
       });
+      this.page++;
     });
   }
 

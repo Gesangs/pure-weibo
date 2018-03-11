@@ -19,7 +19,6 @@ class Comment extends Component {
         }, e)
     }
     goToDetail(weibo, e) {
-        console.log(weibo)
         goToAny(`/detail/${weibo.id}`, { weibo }, e)
     }
     render() {

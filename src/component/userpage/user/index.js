@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
-import { Control } from "react-keeper";
 import {goBack, goToAny} from "../../../router/route"
 import "./style.css";
 class User extends Component {

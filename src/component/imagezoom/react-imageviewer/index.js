@@ -138,6 +138,8 @@ class ImageView extends Component {
             case 'Right':
                 current > 0 && current-- && this.bindStyle(current);
                 break;
+            default:
+                console.log(direction)
         }
         this.changeIndex(current)
     }

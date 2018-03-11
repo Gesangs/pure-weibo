@@ -1,6 +1,6 @@
 
 export function numFormat(s) {
-    const str = Number.parseInt(s).toFixed(0);
+    const str = Number.parseInt(s, 10).toFixed(0);
     let result;
     switch(str.length) {
         case 1:

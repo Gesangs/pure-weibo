@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import { Control } from "react-keeper";
 import { connect } from 'react-redux'
 class Content extends Component {
   constructor(props, context) {

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { HashRouter, Route, Control } from "react-keeper";
+import { HashRouter, Route } from "react-keeper";
 
-import {getAccess_token, Logout} from "../api/user"
+import {getAccess_token} from "../api/user"
 import { URL, endTime } from "../config/config";
-import * as scrollutil from "../utils/scroll-position" 
 
 import Root from "../containers/index"
 import Index from "../containers/index/index";
@@ -24,20 +23,17 @@ import ImageZoom from "../component/imagezoom/index"
 import NotFound from "../containers/404";
 
 class RouterMap extends Component {
-  constructor() {
-    super();
-  }
 
   loginCheck(cb, props){
     const current = (new Date()).getTime();
-    const isover = Math.sign(+endTime - Number.parseInt(current)) !== 1
+    const isover = Math.sign(+endTime - +current) !== 1
     
     if(isover) {
-      console.log("aa")
       const Code = window.location.href.split("=")[1];
       if (!Code) {
         window.location.href = URL;
       } else {
+        localStorage.clear()
         getAccess_token(Code.replace(/#\//g, ""))
       }
     }

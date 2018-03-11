@@ -19,11 +19,11 @@ function getDateDiff(dateTimeStamp) {
   if (dayC >= 7) {
     result = dateTimeStamp.toLocaleDateString().replace(/\//g, "-");
   } else if (dayC >= 1) {
-    result = "" + Number.parseInt(dayC) + "天前";
+    result = "" + Number.parseInt(dayC, 10) + "天前";
   } else if (hourC >= 1) {
-    result = "" + Number.parseInt(hourC) + "小时前";
+    result = "" + Number.parseInt(hourC, 10) + "小时前";
   } else if (minC >= 1) {
-    result = "" + Number.parseInt(minC) + "分钟前";
+    result = "" + Number.parseInt(minC, 10) + "分钟前";
   } else {
     result = "刚刚";
   }

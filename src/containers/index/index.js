@@ -6,8 +6,8 @@ import { handleUser } from "../../utils/class/user";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as userinfoActionsFromOtherFile from "../../action/userinfo";
-import * as emotionActionsFromOtherFile from "../../action/emotion";
+import * as userinfoActionsFromOtherFile from "../../store/action/userinfo";
+import * as emotionActionsFromOtherFile from "../../store/action/emotion";
 
 import Head from "./head";
 import Foot from "./foot";

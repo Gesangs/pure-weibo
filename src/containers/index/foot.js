@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { Logout,Logoutt } from "../../api/user";
 import { Control, Link } from "react-keeper";
-import { goToAny, stopPro } from "../../router/route"
+import { goToAny } from "../../router/route"
 import { Key, reUri } from "../../config/config"
 import "./style.css";
 
 class Foot extends Component {
-    // constructor() {
-    //     super();
-    //     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    //   }
     _logout() {
         Logout().then((res) => {
             Logoutt().then((res) => {

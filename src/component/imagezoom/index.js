@@ -13,7 +13,6 @@ class ImageZoom extends Component {
         }
     }
     componentWillMount(){
-        const List = [];
         const imagelist = Control.state.imagelist;
         this.setState({
             imglist: imagelist

@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { connect } from 'react-redux'
 import { goToAny } from "../../router/route";
-import {Control} from "react-keeper"
 import "./style.css";
 class Head extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     path: Control.path
-  //   }
-  // }
   goToUser(e) {
     const user = this.props.userinfo.userinfo;
     goToAny(`/user/${user.id}`,{user}, e);

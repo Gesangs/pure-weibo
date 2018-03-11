@@ -23,6 +23,7 @@ class Detail extends Component {
       commentList: [],
       isMore: true
     };
+    this.page = 2;
   }
   componentWillUnmount() {
     this.setState = (state, callback) => {
@@ -51,15 +52,14 @@ class Detail extends Component {
   }
   _getMoreComments() {
     if(!this.state.isMore) return
-    let page = 2;
     const id = this.props.params.id;
-    return getComments(id, page).then(res => {
+    getComments(id, this.page).then(res => {
       const commentList = handleCommentList(res.data.comments);
       this.setState({
         commentList: [...this.state.commentList, ...commentList],
-        isMore: res.data.total_number > page * commnetCount
+        isMore: res.data.total_number > this.page * commnetCount
       });
-      page++;
+      this.page++;
     });
   }
   render() {
