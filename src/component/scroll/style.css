@@ -10,7 +10,6 @@
     width: 40px;
     height: 40px;
     border-radius: 40px;
-    /* background-image: url("./loading.gif"); */
     z-index: 2;
 }
 .loadMore{

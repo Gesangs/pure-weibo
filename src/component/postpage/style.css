@@ -42,7 +42,7 @@
     position: fixed;
     bottom: 0;
     height: 50px;
-    background-color: #3498db;
+    background-color: var(--blue);
     width: 100%;
     line-height: 50px;
     box-shadow: 3px 0px 4px 0 rgba(53, 152, 219, 0.7)
@@ -93,7 +93,7 @@
 }
 
 .status-image .image-img .image-close {
-    color: #007AFF;
+    color: var(--blue);
     width: 1.2rem;
     height: 1.2rem;
     margin: .5rem;

@@ -7,8 +7,8 @@
   left: 0;
   width: 100%;
   height: 51px;
-  background-color: #3498db;
-  box-shadow: 0 2px 4px 0 #3498db;
+  background-color: var(--blue);
+  box-shadow: 0 2px 4px 0 var(--blue);
   display: flex;
   flex-direction: row;
   align-items: center;

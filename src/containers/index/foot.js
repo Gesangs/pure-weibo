@@ -36,7 +36,7 @@ class Foot extends Component {
                     </Link>
                 </div>
                 { Control.path === "/" || Control.path === "/index"
-                  ? <div className="qiuqiu" onClick={this._logout.bind(this)}>
+                  ? <div className="qiuqiu" onClick={this.goToPost.bind(this)}>
                         <span className="iconfont icon-bi"></span>
                     </div> 
                   : "" }

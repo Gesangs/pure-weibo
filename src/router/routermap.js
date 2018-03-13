@@ -58,7 +58,7 @@ class RouterMap extends Component {
             <Route component={Detail} path="/detail/:id" />
             <Route cache component={Favorites} path="/favorites" />
             <Route component={Post} path="/post" />
-            <Route component={ImageZoom} path="/imageZoom" />
+            <Route component={ImageZoom} cache path="/imageZoom" />
             <Route miss component={NotFound} />
           </Route>
         </div>
