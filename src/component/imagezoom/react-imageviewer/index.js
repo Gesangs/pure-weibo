@@ -46,9 +46,8 @@ class ImageView extends Component {
 
     render() {
         return (
-            <div className="imageview">
+            <div className="imageview" onClick={this.onSingleTap.bind(this)}>
                 <AlloyFinger
-                    onSingleTap={this.onSingleTap.bind(this)}
                     onPressMove={this.onPressMove.bind(this)}
                     onSwipe={this.onSwipe.bind(this)}>
                     <ul id="imagelist" ref={(imagelist) => {this.list = imagelist}} className="imagelist">
@@ -64,7 +63,13 @@ class ImageView extends Component {
                                         onRotate={this.onRotate.bind(this)}
                                         onMultipointEnd={this.onMultipointEnd.bind(this)}
                                         onDoubleTap={this.onDoubleTap.bind(this)}>
-                                        <CenterImage id={`view${i}`} className="imagelist-item-img" lazysrc={item} index={i} current={this.state.current}/>
+                                        <CenterImage 
+                                            id={`view${i}`} 
+                                            className="imagelist-item-img" 
+                                            lazysrc={item} 
+                                            index={i} 
+                                            current={this.state.current}
+                                            />
                                     </AlloyFinger>
                                 </li>
                             )

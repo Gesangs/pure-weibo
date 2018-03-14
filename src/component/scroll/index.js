@@ -83,8 +83,7 @@ class Scroll extends Component {
         {this.props.children}
         <div
           className="loadMore"
-          ref={(loadMore) => {this.loadMore = loadMore}}
-          onClick={this._onReachBottom.bind(this)}>
+          ref={(loadMore) => {this.loadMore = loadMore}}>
           {this.props.load_tip ? "加载更多" : "没有更多了~"}
         </div>
       </div>
