@@ -15,8 +15,12 @@ class ListImg extends Component {
       isvisiable: false
     }
     this.imgArea = null;
+    this.callback = null;
   }
   _lazyimg(){
+    if (this.state.isvisiable) {
+      return
+    }
     const top = this.imgArea.getBoundingClientRect().top;
     if (top && top < windowInnerHeight) {
       this.setState({
@@ -24,19 +28,22 @@ class ListImg extends Component {
       })
     }
   }
+  _debounce(fn, duration) {
+    let timer = null;
+    return () => {
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        fn()
+      }, duration)
+    }
+  }
   componentDidMount(){
-    let timeoutId;
-    const callback = this._lazyimg.bind(this);
-    callback();
-    window.addEventListener("scroll", function () {
-      if (this.state.isvisiable) {
-          return
-      }
-      if (timeoutId) {
-          clearTimeout(timeoutId)
-      }
-      timeoutId = setTimeout(callback, 100)
-    }.bind(this), false);
+    this._lazyimg()
+    this.callback = this._debounce(this._lazyimg.bind(this), 100);
+    window.addEventListener("scroll", this.callback, false);
+  }
+  componentWillUnmount(){
+    window.removeEventListener("scroll", this.callback);
   }
   
   goToImageZoom(imgs, index, e) {
