@@ -48,7 +48,6 @@ class WeiboFlow extends Component {
           load_tip={true}
         >
           <WeiboList weiboList={weiboList} />
-          {/* <div style={{ height: 3000 }}></div> */}
         </Scroll>
       </div>
     );

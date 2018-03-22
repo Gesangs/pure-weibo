@@ -9,7 +9,7 @@ class Head extends Component {
   }
   render() {
     return (
-        <div className="head">
+        <div className="js-head">
           <div onClick={this.goToUser.bind(this)}>
             <span className="iconfont icon-user"></span>
           </div>

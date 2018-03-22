@@ -24,7 +24,7 @@ class Foot extends Component {
         const fun = this.props.setHeadText;
         return(
             <div>
-                <div style={{ "bottom": -3 }} className="foot">
+                <div style={{ "bottom": -3 }} className="js-foot">
                     <Link type="div" to={'/index'} activeClassName="activeFoot">
                         <span className="iconfont icon-weibo" onClick={() => fun("全部微博")}></span>
                     </Link>
@@ -36,7 +36,7 @@ class Foot extends Component {
                     </Link>
                 </div>
                 { Control.path === "/" || Control.path === "/index"
-                  ? <div className="qiuqiu" onClick={this.goToPost.bind(this)}>
+                  ? <div className="js-qiuqiu" onClick={this.goToPost.bind(this)}>
                         <span className="iconfont icon-bi"></span>
                     </div> 
                   : "" }
