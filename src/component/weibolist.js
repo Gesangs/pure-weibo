@@ -12,7 +12,7 @@ class WeiboList extends Component{
     return(
       <div style={{ paddingTop: 1}} id="weibolist">
         {weiboList.map((item, index) => 
-          item ? (<Weibo weibo={item} key={index} />) : ""
+          item ? (<Weibo weibo={item} key={item.id} />) : ""
         )}
       </div>
     )

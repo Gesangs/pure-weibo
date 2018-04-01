@@ -27,7 +27,7 @@ class Comment extends Component {
             <div>
                 {comments.map((item, index) => {
                     const isUserId = this.UserId == item.user.id;
-                    return <div className="commentList" key={index}  onClick={this.goToDetail.bind(this, item.status)}>
+                    return <div className="commentList" key={item.id}  onClick={this.goToDetail.bind(this, item.status)}>
                         <div className="listHead">
                             <img alt="head" src={item.user.head_pic} className="listPic" onClick={this.goToUser.bind(this, item.user)} />
                             <div className="listNameS">

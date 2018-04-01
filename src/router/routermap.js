@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
 import { HashRouter, Route } from "react-keeper";
 
-import {getAccess_token} from "../api/user"
+import { getAccess_token } from "../api/user"
 import { URL, endTime } from "../config/config";
 
 import Root from "../containers/index"
@@ -25,20 +26,24 @@ import NotFound from "../containers/404";
 class RouterMap extends Component {
 
   loginCheck(cb, props){
-    const current = (new Date()).getTime();
-    const isover = Math.sign(+endTime - +current) !== 1
-    
-    if(isover) {
-      const Code = window.location.href.split("=")[1];
-      if (!Code) {
-        window.location.href = URL;
-      } else {
-        localStorage.clear()
-        getAccess_token(Code.replace(/#\//g, ""))
+    const user = this.props.userinfo.userinfo;
+    if(!user) {
+      const current = (new Date()).getTime();
+      const isover = Math.sign(+endTime - +current) !== 1
+      
+      if(isover) {
+        const Code = window.location.href.split("=")[1];
+        if (!Code) {
+          window.location.href = URL;
+        } else {
+          localStorage.clear()
+          getAccess_token(Code.replace(/#\//g, ""))
+        }
       }
     }
     cb();
   }
+  
   render() {
     return (
       <HashRouter>
@@ -67,4 +72,18 @@ class RouterMap extends Component {
   }
 }
 
-export default RouterMap;
+function mapStateToProps(state) {
+  return {
+    userinfo: state.userinfo
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RouterMap)
+
