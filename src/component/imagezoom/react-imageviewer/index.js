@@ -46,9 +46,10 @@ class ImageView extends Component {
 
     render() {
         return (
-            <div className="imageview" onClick={this.onSingleTap.bind(this)}>
+            <div className="imageview">
                 <AlloyFinger
                     onPressMove={this.onPressMove.bind(this)}
+                    onSingleTap={this.onSingleTap.bind(this)}
                     onSwipe={this.onSwipe.bind(this)}>
                     <ul id="imagelist" ref={(imagelist) => {this.list = imagelist}} className="imagelist">
                     {

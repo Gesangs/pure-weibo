@@ -1,5 +1,5 @@
 import {jsonp} from './jsonp'
-import { access_token } from "../config/config"
+import { reUri, access_token } from "../config/config"
 import axios from "axios";
 
 export function getAccess_token(Code) {
@@ -18,6 +18,8 @@ export function getAccess_token(Code) {
       const endTime = currentTime + time;
       localStorage.setItem("endTime", endTime);
       console.log("ss")
+    }).then(() => {
+      window.location.href = reUri;
     });
 }
 

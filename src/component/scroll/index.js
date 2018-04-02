@@ -79,10 +79,10 @@ class Scroll extends Component {
         <img src={`${process.env.PUBLIC_URL}/loading.gif`}
              ref={(refresh) => {this.refresh = refresh}}
              alt="loading"
-             className="refresh" />
+             className="js-refresh" />
         {this.props.children}
         <div
-          className="loadMore"
+          className="js-loadMore"
           ref={(loadMore) => {this.loadMore = loadMore}}>
           {this.props.load_tip ? "加载更多" : "没有更多了~"}
         </div>

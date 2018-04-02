@@ -29,7 +29,7 @@ class RouterMap extends Component {
     const user = this.props.userinfo.userinfo;
     if(!user) {
       const current = (new Date()).getTime();
-      const isover = Math.sign(+endTime - +current) !== 1
+      const isover = endTime ? Math.sign(+endTime - +current) !== 1 : true;
       
       if(isover) {
         const Code = window.location.href.split("=")[1];

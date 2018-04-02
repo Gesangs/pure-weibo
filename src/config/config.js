@@ -4,9 +4,11 @@ export const access_token = localStorage.getItem('access_token');
 
 export const reUri = 'http://127.0.0.1:3000'
 
+// export const reUri = 'http://www.gesangs.com:4396'
+
 export const URL = `https://api.weibo.com/oauth2/authorize?client_id=${Key}&response_type=code&redirect_uri=${reUri}`;
 
-export const endTime = Number.parseInt(localStorage.getItem("endTime"))
+export const endTime = localStorage.getItem("endTime")
 
 // 每次请求返回的微博条数
 export const weiboCount = 10;

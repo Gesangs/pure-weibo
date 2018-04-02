@@ -17,17 +17,19 @@ class ListImg extends Component {
     this.imgArea = null;
     this.callback = null;
   }
+
   _lazyimg(){
     if (this.state.isvisiable) {
       return
     }
     const top = this.imgArea.getBoundingClientRect().top;
-    if (top && top < windowInnerHeight) {
+    if (top && +top < windowInnerHeight) {
       this.setState({
         isvisiable: true
       })
     }
   }
+
   _debounce(fn, duration) {
     let timer = null;
     return () => {
@@ -37,11 +39,13 @@ class ListImg extends Component {
       }, duration)
     }
   }
+
   componentDidMount(){
     this._lazyimg()
-    this.callback = this._debounce(this._lazyimg.bind(this), 100);
+    this.callback = this._debounce(this._lazyimg.bind(this), 50);
     window.addEventListener("scroll", this.callback, false);
   }
+
   componentWillUnmount(){
     window.removeEventListener("scroll", this.callback);
   }
@@ -49,15 +53,16 @@ class ListImg extends Component {
   goToImageZoom(imgs, index, e) {
     goToAny("/imageZoom", { imagelist: imgs, current: index }, e)
   }
+
   render() {
     const { imgs } = this.props;
     const { isvisiable } = this.state;
     return (
-      <div className="listImg" ref={(img) => {this.imgArea = img;}}>
+      <div className="js-listImg" ref={(imgs) => {this.imgArea = imgs}}>
         {imgs.map((item, index) => {
           return (
             <div
-              className="weiboImg"
+              className={`weiboImg ${isvisiable ? `weiboImg-visi` : ""}`}
               key={index}
               style={{ backgroundImage: `url(${isvisiable ? item : ""})` }}
               onClick={this.goToImageZoom.bind(this, imgs, index)}

@@ -3,7 +3,7 @@
     overflow: hidden;
     position: relative;
 }
-.refresh {
+.js-refresh {
     --width: 70px;
     position: absolute;
     left: 50%;
@@ -13,7 +13,7 @@
     border-radius: var(--width);
     z-index: 2;
 }
-.loadMore{
+.js-loadMore{
     width: 100%;
     height: 50px;
     line-height: 50px;

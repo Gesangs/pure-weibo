@@ -47,23 +47,40 @@ a {
   color: #eb7350;
 }
 
-.listImg {
+.js-listImg {
+  --line: 2px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  box-sizing: border-box;
+  padding-left: calc(var(--line) * 2);
 }
 
-.listImg .weiboImg {
-  display: block;
-  width: 32%;
+.js-listImg .weiboImg {
+  width: calc((100% - var(--line) * 5) / 3 );
   height: 0px;
-  padding-bottom: 32%;
+  padding-bottom: calc((100% - var(--line) * 5) / 3 );
   overflow: hidden;
-  margin-left: 2px;
-  margin-bottom: 2px;
+  margin-right: var(--line);
+  margin-bottom: var(--line);
   background-size: cover;
   background-position: top;
 }
+
+.weiboImg-visi {
+  animation: visi 1s forwards;
+}
+
+
+@keyframes visi {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 
 .retWeibo {
