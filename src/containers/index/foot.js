@@ -14,12 +14,6 @@ class Foot extends Component {
             })
         });
       }
-      goToPost(e){
-        goToAny("/post", {
-                title: "发微博",
-                preText: "说点什么吧..."
-            }, e)
-      }
     render() {
         const fun = this.props.setHeadText;
         return(
@@ -36,7 +30,7 @@ class Foot extends Component {
                     </Link>
                 </div>
                 { Control.path === "/" || Control.path === "/index"
-                  ? <div className="js-qiuqiu" onClick={this.goToPost.bind(this)}>
+                  ? <div className="js-qiuqiu">
                         <span className="iconfont icon-bi"></span>
                     </div> 
                   : "" }

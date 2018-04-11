@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Control } from "react-keeper";
+import Tip from "./tip/index"
 import "../iconfont/iconfont.css"
 
 class Root extends Component {
@@ -13,6 +14,7 @@ class Root extends Component {
         return (
             <div>
                 {this.props.children}
+                <Tip />
             </div>
         )
     }

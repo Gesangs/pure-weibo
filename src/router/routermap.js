@@ -15,13 +15,20 @@ import AtMeWeibo from "../containers/massage/at_me_weibo"
 import CommentByMe from "../containers/massage/comment_by_me"
 import CommentToMe from "../containers/massage/comment_to_me"
 
-import HotPage from "../containers/hotpage/index"
+// import HotPage from "../containers/hotpage/index"
 import Favorites from "../containers/favoriteslist/index"
 import UserPage from "../containers/userpage/index";
 import Detail from "../containers/detail/index";
 import Post from "../component/postpage/post";
 import ImageZoom from "../component/imagezoom/index"
 import NotFound from "../containers/404";
+
+const HotPage = resolve => {
+  import("../containers/hotpage/index").then(module => {
+    resolve(module);
+  });
+};
+
 
 class RouterMap extends Component {
 

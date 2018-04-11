@@ -52,6 +52,32 @@ export function getFavoritesWeiBo(page = 1) {
   return jsonp(url, data)
 }
 
+// 添加一条微博到收藏里
+// http://open.weibo.com/wiki/2/favorites/create
+export function getFavoritesWeiBo(id) {
+  const url = 'https://api.weibo.com/2/favorites/create.json';
+
+  const  data = {
+      access_token,
+      id
+    }
+  
+  return jsonp(url, data)
+}
+
+// 删除一条微博到收藏里
+// http://open.weibo.com/wiki/2/favorites/destroy
+export function getFavoritesWeiBo(id) {
+  const url = 'https://api.weibo.com/2/favorites/destroy.json';
+
+  const  data = {
+      access_token,
+      id
+    }
+  
+  return jsonp(url, data)
+}
+
 // 获取当前登录用户的收藏标签列表
 // http://open.weibo.com/wiki/2/favorites/tags
 export function getFavoritesTag(tid, page = 1) {
@@ -81,7 +107,7 @@ export function getFavoritesByTag(page = 1) {
   return jsonp(url, data)
 }
 
-// 返回最新的公共微博
+// 获取最新的公共微博
 // http://open.weibo.com/wiki/2/statuses/public_timeline
 export function getPublicWeiBo(page = 1) {
   const url = 'https://api.weibo.com/2/statuses/public_timeline.json'

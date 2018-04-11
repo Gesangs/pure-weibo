@@ -1,0 +1,33 @@
+.Tip {
+  min-width: 100px;
+  min-height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: white;
+  position: fixed;
+  bottom: -50px;
+  left: 50%;
+  font-size: 14px;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.Tip-animation {
+  animation: tip 3s;
+}
+
+@keyframes tip {
+  0% {
+    bottom: -50px;
+  }
+  30% {
+    bottom: 80px;
+  }
+  70% {
+    bottom: 80px;
+  }
+  100% {
+    bottom: -50px;
+  }
+}

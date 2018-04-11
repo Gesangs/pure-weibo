@@ -42,7 +42,12 @@
   font-size: 13px;
 }
 
-a {
+.Content{
+  line-height: 25px;
+  letter-spacing: 1.5px;
+}
+
+.Content a {
   text-decoration: none;
   color: #eb7350;
 }
@@ -65,6 +70,13 @@ a {
   margin-bottom: var(--line);
   background-size: cover;
   background-position: top;
+}
+
+.emotion{
+  --len: 18px;
+  width: var(--len);
+  height: var(--len);
+  vertical-align: middle;
 }
 
 .weiboImg-visi {

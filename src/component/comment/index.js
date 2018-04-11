@@ -12,10 +12,14 @@ class Comment extends Component {
     goToUser(user, e) {
         goToAny(`/user/${user.id}`, { user }, e)
     }
-    goToReply(name, e){
+    goToReply(name, cid, e){
+        const id = this.props.id;
         goToAny("/post", {
+            id,
+            cid,
             title: "回复评论",
-            preText: `回复${name}`
+            preText: `回复${name}`,
+            fun: "reply_comment"
         }, e)
     }
     goToDetail(weibo, e) {
@@ -40,7 +44,7 @@ class Comment extends Component {
                             </div>
                             {isUserId
                              ? ""
-                             : <div className="reply" onClick={this.goToReply.bind(this, item.user.name)}>
+                             : <div className="reply" onClick={this.goToReply.bind(this, item.user.name, item.id)}>
                                   <span className="iconfont icon-comment"></span>
                                </div>
                             }

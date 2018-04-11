@@ -80,9 +80,9 @@ class Detail extends Component {
               height: 20
             }}
           />
-          <Comment commentList={commentList} />
+          <Comment commentList={commentList} id={weibo.id} />
         </Scroll>
-        <Foot />
+        <Foot id={weibo.id} />
       </div>
     );
   }

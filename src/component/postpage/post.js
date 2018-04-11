@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import * as tipActionsFromOtherFile from "../../store/action/tip";
 import { Control } from "react-keeper";
 import * as api from "../../api/comment"
 import "./style.css"
+import { String } from "core-js";
 
 class Post extends Component{
     constructor(props, context) {
@@ -15,6 +18,10 @@ class Post extends Component{
         }
         this.pic = null;
         this.file = null;
+        this.text = null;
+    }
+    componentDidMount(){
+        this.text.focus();
     }
     handleChange(e) {
         if(this.state.value.length !== 140){
@@ -23,11 +30,29 @@ class Post extends Component{
             })
         } 
     }
+    _SubmitCb(tip){
+        Control.go(-1)
+        this.props.tipActions.setText({
+            tip
+        });
+        setTimeout(() => {
+            this.props.tipActions.setText({
+                tip: ""
+            });
+        }, 2900);
+    }
     Submit(){
         const value = this.state.value
-        const id = Control.state.id;
-        api.reply_comment(value, id).then((res) => {
-            console.log(res);
+        const { id, cid, fun } = Control.state;
+        api[fun](value, id, cid).then((res) => {
+            if(res.status == "200"){
+                // console.log(res.status)
+                // console.log(res)
+                // console.log(typeof res.status)
+                this._SubmitCb("评论成功") 
+            } else {
+                this._SubmitCb("评论失败")                 
+            }     
         })
     }
     selectImg() {
@@ -75,6 +100,7 @@ class Post extends Component{
                 <form>
                     <textarea 
                      value={value} 
+                     ref={(text) => this.text = text}
                      onChange={this.handleChange.bind(this)}
                      placeholder={Control.state.preText} 
                       />
@@ -125,11 +151,10 @@ function mapStateToProps(state) {
   
   function mapDispatchToProps(dispatch) {
     return {
+        tipActions: bindActionCreators(tipActionsFromOtherFile, dispatch)
     }
   }
   export default connect(
     mapStateToProps,
     mapDispatchToProps
   )(Post)
-
-// export default Post
