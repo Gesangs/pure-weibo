@@ -54,29 +54,21 @@ export function getFavoritesWeiBo(page = 1) {
 
 // 添加一条微博到收藏里
 // http://open.weibo.com/wiki/2/favorites/create
-export function getFavoritesWeiBo(id) {
-  const url = 'https://api.weibo.com/2/favorites/create.json';
-
-  const  data = {
-      access_token,
-      id
-    }
-  
-  return jsonp(url, data)
-}
-
 // 删除一条微博到收藏里
 // http://open.weibo.com/wiki/2/favorites/destroy
-export function getFavoritesWeiBo(id) {
-  const url = 'https://api.weibo.com/2/favorites/destroy.json';
+export function setFavoritesWeiBo(id, isfavorited) {
+  const data = {
+    access_token,
+    id,
+    isfavorited
+  }
 
-  const  data = {
-      access_token,
-      id
-    }
-  
-  return jsonp(url, data)
+  return axios.get('/api/favorites',{
+    params: data
+  })
 }
+
+
 
 // 获取当前登录用户的收藏标签列表
 // http://open.weibo.com/wiki/2/favorites/tags

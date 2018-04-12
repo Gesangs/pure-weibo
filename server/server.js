@@ -75,14 +75,18 @@ apiRoutes.get('/repost', function(req, res) {
         }
     })
 })
-apiRoutes.get('/comment_create', function(req, res) {
+
+apiRoutes.get('/comments', function(req, res) {
     const data = {
         access_token: req.query.access_token,
         comment: req.query.comment,
         id: req.query.id
     }
+    const cid = req.query.cid;
+    if(cid)
+        Object.assign(data, {cid})
     request.post({
-        url: "https://api.weibo.com/2/comments/create.json",
+        url: `https://api.weibo.com/2/comments/${cid ? "reply" : "create"}.json`,
         form: data,
         encoding:'utf8'
     },
@@ -95,15 +99,14 @@ apiRoutes.get('/comment_create', function(req, res) {
         }
     })
 })
-apiRoutes.get('/reply_create', function(req, res) {
+
+apiRoutes.get('/favorites', function(req, res) {
     const data = {
         access_token: req.query.access_token,
-        comment: req.query.comment,
-        id: req.query.id,
-        cid: req.query.cid
+        id: req.query.id
     }
     request.post({
-        url: "https://api.weibo.com/2/comments/reply.json",
+        url: `https://api.weibo.com/2/favorites/${req.query.isisfavorited? "destroy" : "create"}.json`,
         form: data,
         encoding:'utf8'
     },
@@ -116,6 +119,7 @@ apiRoutes.get('/reply_create', function(req, res) {
         }
     })
 })
+
 
 apiRoutes.get('/shouquan', function(req, res) {
     const Code = (req.query)['0']

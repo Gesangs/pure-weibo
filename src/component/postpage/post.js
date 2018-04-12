@@ -35,20 +35,12 @@ class Post extends Component{
         this.props.tipActions.setText({
             tip
         });
-        setTimeout(() => {
-            this.props.tipActions.setText({
-                tip: ""
-            });
-        }, 2900);
     }
     Submit(){
         const value = this.state.value
         const { id, cid, fun } = Control.state;
         api[fun](value, id, cid).then((res) => {
-            if(res.status == "200"){
-                // console.log(res.status)
-                // console.log(res)
-                // console.log(typeof res.status)
+            if(res.status === 200 || res.statusText === "OK"){
                 this._SubmitCb("评论成功") 
             } else {
                 this._SubmitCb("评论失败")                 

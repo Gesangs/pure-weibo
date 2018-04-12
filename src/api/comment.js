@@ -95,13 +95,13 @@ export function getAtMeWeibo(page = 1) {
 // 评论一条微博
 // http://open.weibo.com/wiki/2/comments/create
 export function create_comment(comment, id){
-    var data = {
+    const data = {
       access_token,
       comment,
       id
     }
   
-    return axios.get('/api/comment_create',{
+    return axios.get('/api/comments',{
       params: data
     })
   }
@@ -110,14 +110,14 @@ export function create_comment(comment, id){
 // 回复一条评论
 // http://open.weibo.com/wiki/2/comments/reply
   export function reply_comment(comment, id, cid){
-    var data = {
+    const data = {
       access_token,
       comment,
       id,
       cid
     }
   
-    return axios.get('/api/reply_create',{
+    return axios.get('/api/comments',{
       params: data
     })
   }

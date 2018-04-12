@@ -131,3 +131,9 @@
   position: relative;
   top: -3px;
 }
+
+.listFoot .icon-shoucang,
+.listFoot .icon-unshoucang {
+  margin-left: 60px;
+  font-size: 25px;
+}

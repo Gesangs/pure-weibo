@@ -10,7 +10,7 @@ class WeiboList extends Component{
   render() {
     const weiboList = this.props.weiboList;
     return(
-      <div style={{ paddingTop: 1}} id="weibolist">
+      <div style={{ paddingTop: 1}}>
         {weiboList.map((item, index) => 
           item ? (<Weibo weibo={item} key={item.id} />) : ""
         )}

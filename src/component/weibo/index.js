@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ListImg  from "./listimg";
 import Content from "./content";
-import {goToAny} from "../../router/route"
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as tipActionsFromOtherFile from "../../store/action/tip";
+import { goToAny, stopPro } from "../../router/route"; 
+import { setFavoritesWeiBo } from "../../api/weibo"
 import "./style.css";
 
 
@@ -10,6 +14,9 @@ class Weibo extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = {
+      favorited: false
+    }
   }
 
   goToUser(user, e) {
@@ -18,8 +25,32 @@ class Weibo extends Component {
   goToDetail(weibo, e) {
     goToAny(`/detail/${weibo.id}`, { weibo }, e)
   }
+  _setfavoritedCb(tip){
+      this.props.tipActions.setText({
+          tip
+      });
+  }
+  _setfavorited(id, isfavorited, e){
+    stopPro(e);
+    const favorited = this.state.favorited;
+    setFavoritesWeiBo(id, isfavorited).then((res) => {
+      if(res.status === 200 || res.statusText === "OK"){
+        this.setState({
+          favorited: !favorited
+        })
+        if(favorited) {
+          this._setfavoritedCb("取消收藏")
+        } else {
+          this._setfavoritedCb("收藏成功")
+        }
+      } else {
+        this._setfavoritedCb("操作失败")
+      }     
+    })
+  }
   render() {
     const { weibo } = this.props;
+    const isfavorited = weibo.favorited || this.state.favorited;
     return (
       <div className="list" onClick={this.goToDetail.bind(this, weibo)}>
         <div className="listHead">
@@ -73,10 +104,30 @@ class Weibo extends Component {
             <span className="iconfont icon-dianzan"></span>
             {weibo.attitudes_count}
           </div>
+          <div 
+            className={`iconfont icon-${isfavorited ? "shoucang" : "unshoucang"}`}
+            onClick={this._setfavorited.bind(this, weibo.id, isfavorited)}>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Weibo;
+
+
+function mapStateToProps(state) {
+  return {
+    userinfo: state.userinfo
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      tipActions: bindActionCreators(tipActionsFromOtherFile, dispatch)
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Weibo)

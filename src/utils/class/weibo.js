@@ -33,18 +33,6 @@ export default class Weibo {
     this.retweeted_status = retweeted_status;
   }
 }
-
-function handleRetWeibo(weibo) {
-  return new Weibo({
-    id: weibo.id,
-    user: handleUser(weibo.user),
-    content: handleContent(weibo.text),
-    pic_urls: handleImgUrl(weibo),
-    reposts_count: weibo.reposts_count,
-    comments_count: weibo.comments_count,
-    attitudes_count: weibo.attitudes_count
-  });
-}
 export function handleContent(text) {
   text = text
     .replace(/(@[^\s|\/|:|：|@|，|。]+)/g, "<user>$1</user>")
@@ -72,7 +60,7 @@ export function handleWeibo(weibo) {
     comments_count: weibo.comments_count,
     attitudes_count: weibo.attitudes_count,
     retweeted_status: weibo.retweeted_status
-      ? handleRetWeibo(weibo.retweeted_status)
+      ? handleWeibo(weibo.retweeted_status)
       : ""
   });
 }

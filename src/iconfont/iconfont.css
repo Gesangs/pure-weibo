@@ -16,7 +16,8 @@
 }
 
 .icon-user:before { content: "\e6a3"; }
-.icon-shoucang:before { content: "\e605"; }
+.icon-unshoucang:before { content: "\e605"; color: rgba(200, 200, 200, 0.6) }
+.icon-shoucang:before { content: "\e605"; color: rgb(229, 207, 27) }
 .icon-fanhui:before { content: "\e6e5"; }
 .icon-tianxie:before { content: "\e626"; }
 
