@@ -15,7 +15,7 @@ class Weibo extends Component {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      favorited: false
+      favorited: this.props.weibo.favorited,
     }
   }
 
@@ -30,19 +30,19 @@ class Weibo extends Component {
           tip
       });
   }
-  _setfavorited(id, isfavorited, e){
+  _setfavorited(id, favorited, e){
     stopPro(e);
-    const favorited = this.state.favorited;
-    setFavoritesWeiBo(id, isfavorited).then((res) => {
+    if(favorited) console.log(favorited)
+    setFavoritesWeiBo(id, favorited).then((res) => {
       if(res.status === 200 || res.statusText === "OK"){
-        this.setState({
-          favorited: !favorited
-        })
         if(favorited) {
           this._setfavoritedCb("取消收藏")
         } else {
           this._setfavoritedCb("收藏成功")
         }
+        this.setState({
+          favorited: !favorited
+        })
       } else {
         this._setfavoritedCb("操作失败")
       }     
@@ -50,7 +50,8 @@ class Weibo extends Component {
   }
   render() {
     const { weibo } = this.props;
-    const isfavorited = weibo.favorited || this.state.favorited;
+    const { favorited } = this.state;
+    console.log(weibo.favorited)
     return (
       <div className="list" onClick={this.goToDetail.bind(this, weibo)}>
         <div className="listHead">
@@ -105,8 +106,8 @@ class Weibo extends Component {
             {weibo.attitudes_count}
           </div>
           <div 
-            className={`iconfont icon-${isfavorited ? "shoucang" : "unshoucang"}`}
-            onClick={this._setfavorited.bind(this, weibo.id, isfavorited)}>
+            className={`iconfont icon-${favorited ? "shoucang" : "unshoucang"}`}
+            onClick={this._setfavorited.bind(this, weibo.id, favorited)}>
           </div>
         </div>
       </div>

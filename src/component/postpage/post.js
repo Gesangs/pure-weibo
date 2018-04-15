@@ -6,7 +6,6 @@ import * as tipActionsFromOtherFile from "../../store/action/tip";
 import { Control } from "react-keeper";
 import * as api from "../../api/comment"
 import "./style.css"
-import { String } from "core-js";
 
 class Post extends Component{
     constructor(props, context) {

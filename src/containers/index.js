@@ -4,9 +4,6 @@ import Tip from "./tip/index"
 import "../iconfont/iconfont.css"
 
 class Root extends Component {
-    constructor() {
-        super();
-    }
     componentDidMount(){
         Control.go("/index")
     }

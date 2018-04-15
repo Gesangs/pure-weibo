@@ -105,15 +105,15 @@ apiRoutes.get('/favorites', function(req, res) {
         access_token: req.query.access_token,
         id: req.query.id
     }
+    const url = `https://api.weibo.com/2/favorites/${req.query.isfavorited === "true" ? "destroy" : "create"}.json`
     request.post({
-        url: `https://api.weibo.com/2/favorites/${req.query.isisfavorited? "destroy" : "create"}.json`,
+        url,
         form: data,
         encoding:'utf8'
     },
     function(error, response, body){
-        if(response.statusCode == 200){
-            res.json(body)
-        }else{
+        res.json(body)
+        if(response.statusCode !== 200){
             console.log(body)
             console.log(response.statusCode);
         }
@@ -130,8 +130,8 @@ apiRoutes.get('/shouquan', function(req, res) {
                 client_id: '1654230425',
                 client_secret: '1819e114a616ed6d5fcb2385a443353c',
                 grant_type: "authorization_code",
-                redirect_uri: 'http://127.0.0.1:3000',
-                // redirect_uri: 'http://www.gesangs.com:4396',
+                // redirect_uri: 'http://127.0.0.1:3000',
+                redirect_uri: 'http://www.gesangs.com:4396',
                 code: Code
             },
             encoding:'utf8'
@@ -150,9 +150,9 @@ apiRoutes.get('/shouquan', function(req, res) {
 
 
 app.use('/api', apiRoutes)
-// app.use(express.static('./build'))
-// var port = 4396;
-var port = 3001;
+app.use(express.static('./build'))
+var port = 4396;
+// var port = 3001;
 
 module.exports = app.listen(port, function(err) {
     if(err) {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Logout,Logoutt } from "../../api/user";
 import { Control, Link } from "react-keeper";
-import { goToAny } from "../../router/route"
 import { Key, reUri } from "../../config/config"
 import "./style.css";
 

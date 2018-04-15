@@ -1,31 +1,45 @@
 import React, { Component } from "react";
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import PureRenderMixin from "react-addons-pure-render-mixin";
 import { scrollDisplay } from "../../utils/pullToRefresh";
 import "./style.css";
 
 const windowInnerHeight =
-      window.screen.height ||
-      window.innerHeight ||
-      document.documentElement.clientHeight;
+  window.screen.height ||
+  window.innerHeight ||
+  document.documentElement.clientHeight;
 
 class Scroll extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-      this.startY = 0
-      this.deltaY = 0
-      this.loadMore = null;
-      this.refresh = null;
-      this.islock = null;
+    this.startY = 0;
+    this.deltaY = 0;
+    this.loadMore = null;
+    this.refresh = null;
+    this.islock = null;
+
+    this.currentTop = 0;
+    this.direction = null;
   }
   componentDidMount() {
-    scrollDisplay();
+    window.addEventListener("scroll", this._isUporDown, false);
+    scrollDisplay()
     this.islock = false;
   }
 
+  // 判断滑动方向
+  // this.direction > 0 ? "上滑" : "下滑"
+  _isUporDown() {
+    const scrollY = window.scrollY;
+    this.direction = scrollY - this.currentTop;
+    this.currentTop = scrollY;
+  }
+
+
+
   _handleTouchStart(e) {
     const touch = e.touches[0];
-    this.startY = touch.pageY
+    this.startY = touch.pageY;
   }
   // 下拉刷新
   _onPullDownRefresh() {
@@ -38,7 +52,7 @@ class Scroll extends Component {
   }
   // 上拉加载
   _onReachBottom() {
-    if(!this.props.onReachBottom) return
+    if (!this.props.onReachBottom) return;
     const top = this.loadMore.getBoundingClientRect().top;
     if (top && top < windowInnerHeight && this.props.load_tip) {
       this.props.onReachBottom();
@@ -47,12 +61,13 @@ class Scroll extends Component {
   _handleTouchMove(e) {
     const touch = e.touches[0];
     const fun = this.props.onPullDownRefresh;
-    if(fun && !this.islock) {
-      if(window.scrollY === 0){
+    if (fun && !this.islock) {
+      if (window.scrollY === 0) {
         this.deltaY = (touch.pageY - this.startY) * 0.6;
         if (this.deltaY > 100) this.deltaY = 100;
         if (this.deltaY > 20) {
-          this.refresh.style.transform = `translate3d(-50%,${this.deltaY - 30}px,0)`;
+          this.refresh.style.transform = `translate3d(-50%,${this.deltaY -
+            30}px,0)`;
           this.refresh.style.transition = `all 0s ease`;
         }
         if (this.deltaY === 100) {
@@ -75,15 +90,23 @@ class Scroll extends Component {
         onTouchStart={this._handleTouchStart.bind(this)}
         onTouchMove={this._handleTouchMove.bind(this)}
         onTouchEnd={this._handleTouchEnd.bind(this)}
-        className="wrapper">
-        <img src={`${process.env.PUBLIC_URL}/loading.gif`}
-             ref={(refresh) => {this.refresh = refresh}}
-             alt="loading"
-             className="js-refresh" />
+        className="wrapper"
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/loading.gif`}
+          ref={refresh => {
+            this.refresh = refresh;
+          }}
+          alt="loading"
+          className="js-refresh"
+        />
         {this.props.children}
         <div
           className="js-loadMore"
-          ref={(loadMore) => {this.loadMore = loadMore}}>
+          ref={loadMore => {
+            this.loadMore = loadMore;
+          }}
+        >
           {this.props.load_tip ? "加载更多" : "没有更多了~"}
         </div>
       </div>
