@@ -51,7 +51,6 @@ class Weibo extends Component {
   render() {
     const { weibo } = this.props;
     const { favorited } = this.state;
-    console.log(weibo.favorited)
     return (
       <div className="list" onClick={this.goToDetail.bind(this, weibo)}>
         <div className="listHead">

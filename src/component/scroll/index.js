@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
+import LoadMore from "../loadmore/index"
 import { scrollDisplay } from "../../utils/pullToRefresh";
 import "./style.css";
 
@@ -50,15 +51,8 @@ class Scroll extends Component {
       this.islock = false;
     }, 800);
   }
-  // 上拉加载
-  _onReachBottom() {
-    if (!this.props.onReachBottom) return;
-    const top = this.loadMore.getBoundingClientRect().top;
-    if (top && top < windowInnerHeight && this.props.load_tip) {
-      this.props.onReachBottom();
-    }
-  }
   _handleTouchMove(e) {
+    if(this.direction > 0) return
     const touch = e.touches[0];
     const fun = this.props.onPullDownRefresh;
     if (fun && !this.islock) {
@@ -78,13 +72,13 @@ class Scroll extends Component {
     }
   }
   _handleTouchEnd(e) {
-    this._onReachBottom();
     this.refresh.style.transition = `all 0.6s ease`;
     if (this.deltaY !== 100) {
       this.refresh.style.transform = `translate3d(-50%,-120px,0)`;
     }
   }
   render() {
+    const { load_tip, onReachBottom } = this.props;
     return (
       <div
         onTouchStart={this._handleTouchStart.bind(this)}
@@ -101,14 +95,7 @@ class Scroll extends Component {
           className="js-refresh"
         />
         {this.props.children}
-        <div
-          className="js-loadMore"
-          ref={loadMore => {
-            this.loadMore = loadMore;
-          }}
-        >
-          {this.props.load_tip ? "加载更多" : "没有更多了~"}
-        </div>
+        <LoadMore isLoadingMore={ load_tip } loadMoreFn={ onReachBottom } />
       </div>
     );
   }

@@ -40,7 +40,7 @@ class Detail extends Component {
     // })
     this._getComments();
   }
-  _getComments() {
+  _getComments = () => {
     const id = this.props.params.id;
     getComments(id).then(res => {
       const data = res.data;
@@ -50,7 +50,7 @@ class Detail extends Component {
       });
     });
   }
-  _getMoreComments() {
+  _getMoreComments = () => {
     if(!this.state.isMore) return
     const id = this.props.params.id;
     getComments(id, this.page).then(res => {
@@ -68,8 +68,8 @@ class Detail extends Component {
       <div className="detail">
         <Head />
         <Scroll
-          onPullDownRefresh={this._getComments.bind(this)}
-          onReachBottom={this._getMoreComments.bind(this)}
+          onPullDownRefresh={this._getComments}
+          onReachBottom={this._getMoreComments}
           load_tip={isMore}
         >
           <Weibo weibo={weibo} />

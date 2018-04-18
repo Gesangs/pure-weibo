@@ -21,14 +21,14 @@ class WeiboFlow extends Component {
     this._getNewWeiBo();
   }
 
-  _getNewWeiBo() {
+  _getNewWeiBo = () => {
     this.fun().then(res => {
       this.setState({
         weiboList: handleWeiboList(res.data.statuses)
       });
     });
   }
-  _getMoreWeiBo() {
+  _getMoreWeiBo = () => {
     this.fun(this.page).then(res => {
       const weiboList = handleWeiboList(res.data.statuses);
       this.setState({
@@ -43,8 +43,8 @@ class WeiboFlow extends Component {
     return (
       <div className="weiboList">
         <Scroll
-          onPullDownRefresh={this._getNewWeiBo.bind(this)}
-          onReachBottom={this._getMoreWeiBo.bind(this)}
+          onPullDownRefresh={this._getNewWeiBo}
+          onReachBottom={this._getMoreWeiBo}
           load_tip={true}
         >
           <WeiboList weiboList={weiboList} />

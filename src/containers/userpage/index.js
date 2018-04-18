@@ -29,7 +29,7 @@ class UserPage extends Component {
       });
     }
   }
-  SwitchTab() {
+  SwitchTab = () => {
     if (!this.isUserId) return;
     this.setState({
       showList: !this.state.showList
@@ -39,7 +39,7 @@ class UserPage extends Component {
     const { weiboList, userinfo, showList } = this.state;
     return (
       <div className="UserPage">
-        <User userinfo={userinfo} isUserId={this.isUserId} SwitchTab={this.SwitchTab.bind(this)} />
+        <User userinfo={userinfo} isUserId={this.isUserId} SwitchTab={this.SwitchTab} />
         {showList ? (
           <WeiboList weiboList={weiboList} />
         ) : (

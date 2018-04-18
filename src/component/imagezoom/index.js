@@ -21,13 +21,13 @@ class ImageZoom extends Component {
             imglist: imagelist
         })
     }
-    close() {
+    close = () => {
         Control.go(-1);
     }
     render() {
         const {imglist, current} = this.state
         return (
-            <ImageView imagelist={imglist} current={current} close={this.close.bind(this)} />
+            <ImageView imagelist={imglist} current={current} close={this.close} />
         )
     }
     

@@ -22,7 +22,7 @@ class Favorites extends Component {
         this._getAll()
         this._getTags()
     }
-    _getAll(){
+    _getAll = () => {
         api.getFavoritesWeiBo().then((res) => {
             this.setState({
                 weiboList: this._handleList(res.data.favorites),
@@ -31,7 +31,7 @@ class Favorites extends Component {
             })
         })
     }
-    _getMore(){
+    _getMore = () => {
         let page = 2;
         return api.getFavoritesWeiBo(page).then(res => {
         const weiboList = this._handleList(res.data.favorites);
@@ -71,10 +71,10 @@ class Favorites extends Component {
              <div className="favorite">
                 <Head />
                 <Scroll
-                    onPullDownRefresh={this._getAll.bind(this)}
-                    onReachBottom={this._getMore.bind(this)}
+                    onPullDownRefresh={this._getAll}
+                    onReachBottom={this._getMore}
                     load_tip={isMore}>
-                    <div onClick={this._getAll.bind(this)} className="Tags">
+                    <div onClick={this._getAll} className="Tags">
                         全部({total_number})
                     </div>
                     {tags.map((item, index) => 

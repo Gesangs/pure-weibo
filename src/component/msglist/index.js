@@ -39,7 +39,7 @@ class MsgList extends Component {
       }
     });
   }
-  _getMoreData() {
+  _getMoreData = () => {
     let page = 2;
     const fun = api[this.props.getNewData];
     return fun(page).then(res => {
@@ -53,11 +53,11 @@ class MsgList extends Component {
     });
   }
   render() {
-    const { data } = this.state;
+    const { data, isMore } = this.state;
     return (
       <Scroll
-        onReachBottom={this._getMoreData.bind(this)}
-        load_tip={this.state.isMore}>
+        onReachBottom={this._getMoreData}
+        load_tip={isMore}>
         {data ? <Comment commentList={data} /> : <Loading />}
       </Scroll>
     );

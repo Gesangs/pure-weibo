@@ -7,7 +7,7 @@ class User extends Component {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
-  SwitchTab() {
+  SwitchTab = () => {
     const switchs = this.props.SwitchTab;
     switchs();
   }
@@ -46,8 +46,8 @@ class User extends Component {
               </span>
               <span />
               <div className="tabBar">
-                <span onClick={this.SwitchTab.bind(this)}>关于</span>
-                <span onClick={this.SwitchTab.bind(this)}>
+                <span onClick={this.SwitchTab}>关于</span>
+                <span onClick={this.SwitchTab}>
                   微博({userinfo.statuses_count})
                 </span>
               </div>
