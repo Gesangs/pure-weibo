@@ -4,11 +4,6 @@ import LoadMore from "../loadmore/index"
 import { scrollDisplay } from "../../utils/pullToRefresh";
 import "./style.css";
 
-const windowInnerHeight =
-  window.screen.height ||
-  window.innerHeight ||
-  document.documentElement.clientHeight;
-
 class Scroll extends Component {
   constructor(props, context) {
     super(props, context);

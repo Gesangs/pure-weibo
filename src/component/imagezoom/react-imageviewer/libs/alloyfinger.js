@@ -179,7 +179,7 @@ export default class AlloyFinger extends Component {
           this.y1,
           this.y2
         );
-        evt.distance = Math.abs(this.x1 - this.x2);
+        evt.distance = Math.abs(this.x1 - this.x2);      
         this.swipeTimeout = setTimeout(() => {
           this._emitEvent("onSwipe", evt);
         }, 0);

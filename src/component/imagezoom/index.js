@@ -30,7 +30,6 @@ class ImageZoom extends Component {
             <ImageView imagelist={imglist} current={current} close={this.close} />
         )
     }
-    
 }
 
 export default ImageZoom;

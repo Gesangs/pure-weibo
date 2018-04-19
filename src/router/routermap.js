@@ -4,6 +4,7 @@ import { HashRouter, Route } from "react-keeper";
 
 import { getAccess_token } from "../api/user"
 import { URL, endTime } from "../config/config";
+import * as scrollUtils from "../utils/scroll-position";
 
 import Root from "../containers/index"
 import Index from "../containers/index/index";
@@ -23,14 +24,29 @@ import Post from "../component/postpage/post";
 import ImageZoom from "../component/imagezoom/index"
 import NotFound from "../containers/404";
 
-// const HotPage = resolve => {
-//   import("../containers/hotpage/index").then(module => {
-//     resolve(module);
-//   });
-// };
-
 
 class RouterMap extends Component {
+
+  constructor(){
+    super()
+    this.indexScroll = null;
+  }
+
+  enterIndex(cb, props){
+    const Y = this.indexScroll
+    if(Y)
+      setTimeout(() => {
+        scrollUtils.setScrollTop(+Y)
+      },50)
+    cb()
+  }
+
+  leaveIndex(cb, props){
+    const Y = scrollUtils.getScrollTop();
+    if(Y > 0)
+      this.indexScroll = Y;    
+    cb()
+  }
 
   loginCheck(cb, props){
     const user = this.props.userinfo.userinfo;
@@ -56,7 +72,7 @@ class RouterMap extends Component {
       <HashRouter>
         <div>
           <Route component={Root} path="/" enterFilter={ this.loginCheck.bind(this) }>
-            <Route index component={Index} path="/index">
+            <Route index component={Index} path="/index" enterFilter={ this.enterIndex.bind(this) } leaveFilter={ this.leaveIndex.bind(this) }>
               <Route index cache component={Home} />
               <Route component={Massage} path="/massage">
                 <Route index cache='parent' component={CommentToMe} />

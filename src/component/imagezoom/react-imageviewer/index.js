@@ -6,6 +6,7 @@ import Singleton from 'react-singleton'
 import AlloyFinger from './libs/alloyfinger.js'
 import Transform from './libs/transform.js'
 import { CenterImage } from './centerImage.js'
+import { windowInnerHeight, windowInnerWidth } from "../../../utils/scroll-position"
 
 import './style.css'
 
@@ -38,8 +39,8 @@ class ImageView extends Component {
     }
 
     initScale = 1;
-    screenWidth = window.innerWidth || window.screen.availWidth;
-    screenHeight = window.innerHeight || window.screen.availHeight;
+    screenWidth = windowInnerWidth;
+    screenHeight = windowInnerHeight;
     list = null;
     ob = null;
     focused = null;
@@ -107,10 +108,12 @@ class ImageView extends Component {
 
         if( !this.focused ){
             if((current === 0 && evt.deltaX > 0) || (current === this.arrLength - 1 && evt.deltaX < 0)){
-                this.list.translateX += evt.deltaX / 3;
+                this.list.translateX += evt.deltaX / 2;
             }else{
                 this.list.translateX += evt.deltaX;
             }
+            if(this.ob.height > windowInnerHeight)
+                this.list.translateY += evt.deltaY;
         }
 
         evt.preventDefault();

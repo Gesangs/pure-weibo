@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { goToAny } from "../../router/route";
-
-const windowInnerHeight =
-      window.screen.height ||
-      window.innerHeight ||
-      document.documentElement.clientHeight;
+import { windowInnerHeight } from "../../utils/scroll-position";
 
 class ListImg extends Component {
   constructor(props, context) {

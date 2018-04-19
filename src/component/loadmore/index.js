@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { windowInnerHeight } from "../../utils/scroll-position"
 
 import './style.css'
 
@@ -30,8 +31,7 @@ class LoadMore extends React.Component {
         const loadMoreFn = this.props.loadMoreFn
         const callback = () => {
             const top = this.load.getBoundingClientRect().top
-            const windowHeight = window.screen.height
-            if (top && top < windowHeight) {
+            if (top && top < windowInnerHeight) {
                 // 证明 wrapper 已经被滚动到暴露在页面可视范围之内了
                 loadMoreFn()
             }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { windowInnerHeight, windowInnerWidth } from "../../../utils/scroll-position"
 
 const PRELOADNUM = 3;
 
@@ -17,7 +18,7 @@ export class CenterImage extends Component {
     render(){
         const { loading, error } = this.state,
             { index, current, lazysrc, ...childProps } = this.props,
-            img = (<img onLoad={this.onImgLoad.bind(this)} alt={index} src={lazysrc} {...childProps} />);
+            img = (<img onLoad={this.onImgLoad.bind(this)}  alt={index} src={lazysrc} {...childProps} />);
 
         // init first image, others have been preloaded
         if( index === current ){ return img }
@@ -64,26 +65,16 @@ export class CenterImage extends Component {
             h = target.naturalHeight,
             w = target.naturalWidth,
             r = h / w,
-            height = window.innerHeight || window.screen.availHeight,
-            width = window.innerWidth || window.screen.availWidth,
+            height = windowInnerHeight,
+            width = windowInnerWidth,
             rate = height / width;
+        let top;
 
-        let imgStyle = {};
-
-        if(r > rate){
-            imgStyle.height = height + "px";
-            imgStyle.width = w * height / h + "px";
-            imgStyle.left = width / 2 - (w * height / h) / 2 + "px";
-        }else if( r < rate){
-            imgStyle.width = width + "px";
-            imgStyle.height = h * width / w + "px";
-            imgStyle.top = height / 2 - (h * width / w) / 2 + "px"
-        } else {
-            imgStyle.width = width;
-            imgStyle.height = height;
+        if( r < rate){
+            top = height / 2 - (h * width / w) / 2
         }
 
-        target.setAttribute('style', `width:${imgStyle.width}; height:${imgStyle.height}; left:${imgStyle.left}; top:${imgStyle.top};`);
+        target.setAttribute('style', `width:${width}px; top:${top}px;`);
         target.setAttribute('rate', 1/r);
     }
 }
