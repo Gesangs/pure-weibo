@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import MsgList from "../../component/msglist/index";
+import { getCommentsByAndToMe } from "../../api/comment"
+
+
 class CommentByMe extends Component {
   constructor(props, context) {
     super(props, context);
@@ -9,7 +12,8 @@ class CommentByMe extends Component {
     );
   }
   render() {
-    return <MsgList getNewData={"getCommentsByMe"} />;
+    const fun = getCommentsByAndToMe("by")
+    return <MsgList getNewData={fun} />;
   }
 }
 

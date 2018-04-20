@@ -100,6 +100,19 @@ apiRoutes.get('/comments', function(req, res) {
     })
 })
 
+apiRoutes.get('/comments/info', function(req, res) {
+    request.get({
+        url: req.query[0]
+    },
+    function(error, response, body){
+        res.json(JSON.parse(body))
+        if(response.statusCode !== 200){
+            console.log(body)
+            console.log(response.statusCode);
+        }
+    })
+})
+
 apiRoutes.get('/favorites', function(req, res) {
     const data = {
         access_token: req.query.access_token,
@@ -131,7 +144,7 @@ apiRoutes.get('/shouquan', function(req, res) {
                 client_secret: '1819e114a616ed6d5fcb2385a443353c',
                 grant_type: "authorization_code",
                 redirect_uri: 'http://127.0.0.1:3000',
-                // redirect_uri: 'http://www.gesangs.com:4396',
+                // redirect_uri: 'https://weibo.gesangs.com',
                 code: Code
             },
             encoding:'utf8'

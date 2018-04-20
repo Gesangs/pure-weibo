@@ -4,7 +4,7 @@ export const access_token = localStorage.getItem('access_token');
 
 export const reUri = 'http://127.0.0.1:3000'
 
-// export const reUri = 'http://www.gesangs.com:4396'
+// export const reUri = 'https://weibo.gesangs.com'
 
 export const URL = `https://api.weibo.com/oauth2/authorize?client_id=${Key}&response_type=code&redirect_uri=${reUri}`;
 

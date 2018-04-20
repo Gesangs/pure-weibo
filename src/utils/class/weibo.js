@@ -94,3 +94,15 @@ function handleImgUrl(weibo){
   }
   return arr;
 }
+
+// 在下一次加载前，如果有新微博，下一次加载的数据前几条 会与 上一次的数据后几条 重复
+export const uniqueWeibo = (pre, next) => {
+  let i = pre.length - 1;
+  for(; i > 0; i--){
+      if(pre[i].id === next[0].id){
+          pre.splice(i)
+          break;
+      }
+  }
+  return [...pre, ...next]
+}

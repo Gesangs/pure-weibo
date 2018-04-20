@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import MsgList from "../../component/msglist/index";
+import { getAtCommentsAndWeibo } from "../../api/comment"
+
 class AtMeComment extends Component {
   constructor(props, context) {
     super(props, context);
@@ -9,7 +11,8 @@ class AtMeComment extends Component {
     );
   }
   render() {
-    return <MsgList getNewData={"getAtMeComments"} />;
+    const fun = getAtCommentsAndWeibo("comments")
+    return <MsgList getNewData={fun} />;
   }
 }
 

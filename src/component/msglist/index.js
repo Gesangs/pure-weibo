@@ -3,7 +3,6 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 import Scroll from "../scroll/index";
 import Loading from "./loading/index"
 import Comment from "../comment/index";
-import * as api from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
 import { handleWeiboList } from "../../utils/class/weibo"
 import { commnetCount } from "../../config/config"
@@ -22,9 +21,9 @@ class MsgList extends Component {
     this._getNewData();
   }
   _getNewData() {
-    const fun = api[this.props.getNewData];
+    const fun = this.props.getNewData;
     fun().then(res => {
-      const data = res.data.query.results.json;
+      const data = res.data;
       const list = data.comments || data.statuses;
       if (!data.total_number) {
         this.setState({
@@ -41,7 +40,7 @@ class MsgList extends Component {
   }
   _getMoreData = () => {
     let page = 2;
-    const fun = api[this.props.getNewData];
+    const fun = this.props.getNewData;
     return fun(page).then(res => {
       const data = res.data.query.results.json;
       const list = data.comments || data.statuses;

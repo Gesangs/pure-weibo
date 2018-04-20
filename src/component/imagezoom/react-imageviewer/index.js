@@ -113,7 +113,7 @@ class ImageView extends Component {
                 this.list.translateX += evt.deltaX;
             }
             if(this.ob.height > windowInnerHeight)
-                this.list.translateY += evt.deltaY;
+                this.list.translateY += evt.deltaY * 1.3;
         }
 
         evt.preventDefault();

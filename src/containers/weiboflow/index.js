@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import * as api from "../../api/weibo";
-import { handleWeiboList } from "../../utils/class/weibo";
+import { handleWeiboList, uniqueWeibo } from "../../utils/class/weibo";
 
 import Scroll from "../../component/scroll/index";
 import WeiboList from "../../component/weibolist";
@@ -28,11 +28,12 @@ class WeiboFlow extends Component {
       });
     });
   }
+
   _getMoreWeiBo = () => {
     this.fun(this.page).then(res => {
-      const weiboList = handleWeiboList(res.data.statuses);
+      let weiboList = handleWeiboList(res.data.statuses);
       this.setState({
-        weiboList: [...this.state.weiboList, ...weiboList],
+        weiboList: uniqueWeibo(this.state.weiboList, weiboList),
       });
       this.page++;
     });
