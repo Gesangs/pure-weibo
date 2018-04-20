@@ -9,20 +9,67 @@ import * as scrollUtils from "../utils/scroll-position";
 import Root from "../containers/index"
 import Index from "../containers/index/index";
 import Home from "../containers/home/index"
-
-import Massage from "../containers/massage/index"
-import AtMeComment from "../containers/massage/at_me_comment"
-import AtMeWeibo from "../containers/massage/at_me_weibo"
-import CommentByMe from "../containers/massage/comment_by_me"
-import CommentToMe from "../containers/massage/comment_to_me"
-
-import HotPage from "../containers/hotpage/index"
-import Favorites from "../containers/favoriteslist/index"
-import UserPage from "../containers/userpage/index";
-import Detail from "../containers/detail/index";
-import Post from "../component/postpage/post";
-import ImageZoom from "../component/imagezoom/index"
 import NotFound from "../containers/404";
+
+
+const Massage = (cb)=>{
+  import(/* webpackChunkName: "massage" */ '../containers/massage/index').then((Massage)=>{
+    cb(Massage.default)
+  })
+}
+const AtMeComment = (cb)=>{
+  import(/* webpackChunkName: "at_me_comment" */ '../containers/massage/at_me_comment').then((AtMeComment)=>{
+    cb(AtMeComment.default)
+  })
+}
+const AtMeWeibo = (cb)=>{
+  import(/* webpackChunkName: "at_me_weibo" */ '../containers/massage/at_me_weibo').then((AtMeWeibo)=>{
+    cb(AtMeWeibo.default)
+  })
+}
+const CommentByMe = (cb)=>{
+  import(/* webpackChunkName: "comment_by_me" */ '../containers/massage/comment_by_me').then((CommentByMe)=>{
+    cb(CommentByMe.default)
+  })
+}
+const CommentToMe = (cb)=>{
+  import(/* webpackChunkName: "comment_to_me" */ '../containers/massage/comment_to_me').then((CommentToMe)=>{
+    cb(CommentToMe.default)
+  })
+}
+
+
+const HotPage = (cb)=>{
+  import(/* webpackChunkName: "hotpage" */ '../containers/hotpage/index').then((HotPage)=>{
+    cb(HotPage.default)
+  })
+}
+const Favorites = (cb)=>{
+  import(/* webpackChunkName: "favoriteslist" */ '../containers/favoriteslist/index').then((Favorites)=>{
+    cb(Favorites.default)
+  })
+}
+const Detail = (cb)=>{
+  import(/* webpackChunkName: "detail" */ '../containers/detail/index').then((Detail)=>{
+    cb(Detail.default)
+  })
+}
+const Post = (cb)=>{
+  import(/* webpackChunkName: "postpage" */ '../component/postpage/post').then((Post)=>{
+    cb(Post.default)
+  })
+}
+const ImageZoom = (cb)=>{
+  import(/* webpackChunkName: "imagezoom" */ '../component/imagezoom/index').then((ImageZoom)=>{
+    cb(ImageZoom.default)
+  })
+}
+
+const UserPage = (cb)=>{
+  import(/* webpackChunkName: "userpage" */ '../containers/userpage/index.js').then((UserPage)=>{
+    cb(UserPage.default)
+  })
+}
 
 
 class RouterMap extends Component {
@@ -74,19 +121,19 @@ class RouterMap extends Component {
           <Route component={Root} path="/" enterFilter={ this.loginCheck.bind(this) }>
             <Route index component={Index} path="/index" enterFilter={ this.enterIndex.bind(this) } leaveFilter={ this.leaveIndex.bind(this) }>
               <Route index cache component={Home} />
-              <Route component={Massage} path="/massage">
-                <Route index cache='parent' component={CommentToMe} />
-                <Route cache='parent' component={AtMeComment} path="/at_me_comment" />
-                <Route cache='parent' component={AtMeWeibo} path="/at_me_weibo" />
-                <Route cache='parent' component={CommentByMe} path="/comment_by_me" />
+              <Route loadComponent={Massage} path="/massage">
+                <Route index cache='parent' loadComponent={CommentToMe} />
+                <Route cache='parent' loadComponent={AtMeComment} path="/at_me_comment" />
+                <Route cache='parent' loadComponent={AtMeWeibo} path="/at_me_weibo" />
+                <Route cache='parent' loadComponent={CommentByMe} path="/comment_by_me" />
               </Route>
-              <Route component={HotPage} cache='parent' path="/hot" /> 
+              <Route loadComponent={HotPage} cache='parent' path="/hot" /> 
             </Route>
-            <Route component={UserPage} path="/user/:id" />
-            <Route component={Detail} path="/detail/:id" />
-            <Route cache component={Favorites} path="/favorites" />
-            <Route component={Post} path="/post" />
-            <Route component={ImageZoom} path="/imageZoom" />
+            <Route loadComponent={ UserPage } path='/user/:id' />
+            <Route loadComponent={Detail} path="/detail/:id" />
+            <Route cache loadComponent={Favorites} path="/favorites" />
+            <Route loadComponent={Post} path="/post" />
+            <Route loadComponent={ImageZoom} path="/imageZoom" />
             <Route miss component={NotFound} />
           </Route>
         </div>
