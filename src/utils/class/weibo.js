@@ -65,8 +65,7 @@ export function handleWeibo(weibo) {
   });
 }
 
-export function handleWeiboList(weibos) {
-  weibos = weibos || [];
+export function handleWeiboList(weibos = []) {
   const List = [];
   weibos.forEach((item, index) => {
     const weibo = handleWeibo(item);

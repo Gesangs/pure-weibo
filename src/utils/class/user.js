@@ -48,8 +48,12 @@ export function handleUser(user) {
 }
 
 function handlePic(img1 = "", img2 = ""){
-  const urls = [...(img2.split(";")), ...(img1.split(";"))]
-  return urls.filter((x) => {
+  let urls = [...(img2.split(";")), ...(img1.split(";"))]
+  urls = urls.filter((x) => {
     if(x != "") return true;
   });
+  return urls[0]  
+         ? urls 
+         // 微博默认背景图  
+         : ['http://ww1.sinaimg.cn/crop.0.0.640.640.640/549d0121tw1egm1kjly3jj20hs0hsq4f.jpg']
 }

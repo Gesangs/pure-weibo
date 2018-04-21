@@ -35,8 +35,7 @@ export function handleComment(comment) {
   });
 }
 
-export function handleCommentList(comments) {
-  comments = comments || [];
+export function handleCommentList(comments = []) {
   const List = [];
   comments.forEach((item, index) => {
     const comment = handleComment(item);

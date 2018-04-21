@@ -71,10 +71,10 @@ export class CenterImage extends Component {
         let top;
 
         if( r < rate){
-            top = height / 2 - (h * width / w) / 2
+            top = height / 2 - (h * width / w) / 2 + 'px'
         }
 
-        target.setAttribute('style', `width:${width}px; top:${top}px;`);
+        target.setAttribute('style', `width:${width}px; top:${top ? top : 0};`);
         target.setAttribute('rate', 1/r);
     }
 }
