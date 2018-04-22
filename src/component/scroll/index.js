@@ -1,10 +1,18 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import LoadMore from "../loadmore/index"
 import { scrollDisplay } from "../../utils/pullToRefresh";
 import "./style.css";
 
 class Scroll extends Component {
+  static propTypes = {
+    onPullDownRefresh: PropTypes.func,
+    onReachBottom: PropTypes.func,
+    load_tip: PropTypes.bool,
+    children: PropTypes.element
+  }
+
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

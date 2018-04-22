@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import { Logout,Logoutt } from "../../api/user";
 import { Control, Link } from "react-keeper";
 import { Key, reUri } from "../../config/config"
 import "./style.css";
 
 class Foot extends Component {
+    static propTypes = {
+        setHeadText: PropTypes.func.isRequired
+    }
     _logout() {
         Logout().then((res) => {
             Logoutt().then((res) => {

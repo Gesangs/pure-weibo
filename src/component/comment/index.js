@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Content from "../../component/weibo/content"
 import { goToAny } from "../../router/route"
 import "./style.css"
 class Comment extends Component {
+
+    static propTypes = {
+        id: PropTypes.number.isRequired,
+        commentList: PropTypes.array.isRequired,
+    }
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

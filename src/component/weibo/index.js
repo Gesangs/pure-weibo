@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ListImg  from "./listimg";
 import Content from "./content";
@@ -11,6 +12,9 @@ import "./style.css";
 
 
 class Weibo extends Component {
+  static propTypes = {
+    weibo: PropTypes.object
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

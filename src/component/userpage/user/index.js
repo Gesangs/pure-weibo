@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import {goBack, goToAny} from "../../../router/route"
 import "./style.css";
 class User extends Component {
+  static propTypes = {
+    userinfo: PropTypes.object,
+    isUserId: PropTypes.bool,
+    SwitchTab: PropTypes.func,
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

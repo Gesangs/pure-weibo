@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Weibo from "../component/weibo/index";
 
 class WeiboList extends Component{
+  static propTypes = {
+    weiboList: PropTypes.array
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { getComments } from "../../api/comment";
 import { handleCommentList } from "../../utils/class/comment";
@@ -15,6 +16,9 @@ import Comment from "../../component/comment/index";
 import Scroll from "../../component/scroll/index";
 
 class Detail extends Component {
+  static propTypes = {
+    params: PropTypes.object.isRequired
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

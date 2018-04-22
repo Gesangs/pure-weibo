@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import * as api from "../../api/weibo";
 import { handleWeiboList, uniqueWeibo } from "../../utils/class/weibo";
@@ -7,6 +8,9 @@ import Scroll from "../../component/scroll/index";
 import WeiboList from "../../component/weibolist";
 
 class WeiboFlow extends Component {
+  static propTypes = {
+    getNewWeiBo: PropTypes.func.isRequired
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

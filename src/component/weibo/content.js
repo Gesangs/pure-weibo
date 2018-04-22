@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { connect } from "react-redux";
 class Content extends Component {
+  static propTypes = {
+    con: PropTypes.array
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(

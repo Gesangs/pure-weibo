@@ -1,10 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { windowInnerHeight } from "../../utils/scroll-position"
 
 import './style.css'
 
 class LoadMore extends React.Component {
+    static defaultProps = {
+        isLoadingMore: true, 
+    }
+
+    static propTypes = {
+        isLoadingMore: PropTypes.bool,
+        loadMoreFn: PropTypes.func
+    }
+
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import Scroll from "../scroll/index";
 import Loading from "./loading/index"
@@ -8,6 +9,10 @@ import { handleWeiboList } from "../../utils/class/weibo"
 import { commnetCount } from "../../config/config"
 
 class MsgList extends Component {
+
+  static propTypes = {
+    getNewData: PropTypes.func.isRequired,
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

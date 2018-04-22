@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { goToAny } from "../../router/route";
 import { windowInnerHeight } from "../../utils/scroll-position";
 
 class ListImg extends Component {
+  static propTypes = {
+    imgs: PropTypes.array
+  }
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
