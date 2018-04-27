@@ -70,7 +70,10 @@ class Weibo extends Component {
         </div>
         <div className="listContent">
           <Content con={weibo.content} />
-          {weibo.pic_urls ? <ListImg imgs={weibo.pic_urls} /> : ""}
+          {weibo.pic_urls 
+            ? <ListImg imgs={weibo.pic_urls} /> 
+            : ""}
+            {/* {weibo.chain ? <Chain url={weibo.chain} /> : ""} */}
         </div>
         {/* 转发的微博 */}
         {weibo.retweeted_status ? (
@@ -80,11 +83,10 @@ class Weibo extends Component {
                 <a onClick={this.goToUser.bind(this, weibo.retweeted_status.user)}>@{weibo.retweeted_status.user.name}</a>:{" "}
                 <Content con={weibo.retweeted_status.content} />
               </div>
-              {weibo.retweeted_status.pic_urls ? (
-                <ListImg imgs={weibo.retweeted_status.pic_urls} />
-              ) : (
-                ""
-              )}
+              {weibo.retweeted_status.pic_urls 
+                ? <ListImg imgs={weibo.retweeted_status.pic_urls} />
+                : ""}
+                {/* {weibo.retweeted_status.chain ? <Chain url={weibo.retweeted_status.chain  } /> : "" } */}
             </div>
             <div className="retFoot">
               转发{weibo.retweeted_status.reposts_count} |{" "}

@@ -4,16 +4,15 @@ var request = require('request');
 var apiRoutes = express.Router()
 
 apiRoutes.get('/toLong', function(req, res) {
-    const shortUrl = req.query.url
-    console.log(shortUrl)
-    let url = `https://api.weibo.com/2/short_url/expand.json?access_token=${req.query.ass}`
-    shortUrl.forEach((item, index) => {
-        url += `&url_short=${item}`
-    })
+    const shortUrl = req.query.url;
+    let url = `https://api.weibo.com/2/short_url/expand.json?access_token=${req.query.access_token}&url_short=${req.query.url}`
     request.get({
         url,
     },function(error, response, body) {
+        body = JSON.parse(body)
         res.json(body)
+        console.log(body)
+        console.log(url)
     })
 })
 

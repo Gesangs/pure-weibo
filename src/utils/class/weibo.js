@@ -1,5 +1,6 @@
 import { format } from "../date-utils";
-import { handleUser } from "./user"
+import { handleUser } from "./user";
+import { shortToLong } from "../../api/weibo"
 export default class Weibo {
   constructor({
     id,
@@ -74,19 +75,18 @@ export function handleWeiboList(weibos = []) {
   return List;
 }
 
-function replaceUrl(url){
-  return url.replace('\/thumbnail\/', "/orj360/").replace(/wx\d\./, "wx2.");
-}
+
+
 
 function handleImgUrl(weibo){
   const arr = [];
   if(weibo.pic_urls && weibo.pic_urls[0]) {
     weibo.pic_urls.map((item) => {
-      arr.push(replaceUrl(item.thumbnail_pic))
+      arr.push(item.thumbnail_pic)
     })
   } else {
     if(weibo.original_pic){
-      arr.push(replaceUrl(weibo.original_pic))
+      arr.push(weibo.original_pic)
     } else {
       return null;
     }
@@ -94,7 +94,9 @@ function handleImgUrl(weibo){
   return arr;
 }
 
-// 在下一次加载前，如果有新微博，下一次加载的数据前几条 会与 上一次的数据后几条 重复
+// 在下一次加载前，如果有新微博，上一次的数据后几条 会与 下一次加载的数据前几条 重复
+// 如[1, 2, 3, 4, 5]
+//   [0, 1, 2, 3, 4] [5, 6, 7, 8, 9]
 export const uniqueWeibo = (pre, next) => {
   let i = pre.length - 1;
   for(; i > 0; i--){

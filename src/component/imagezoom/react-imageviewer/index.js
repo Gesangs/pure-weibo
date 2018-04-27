@@ -20,7 +20,8 @@ class ImageView extends Component {
 
     static propTypes = {
         current: PropTypes.number,
-        imagelist: PropTypes.array.isRequired,
+
+        lazyImagelist: PropTypes.array.isRequired,
         disablePageNum: PropTypes.bool,
         disablePinch: PropTypes.bool,
         disableRotate: PropTypes.bool,

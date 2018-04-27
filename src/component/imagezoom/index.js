@@ -15,7 +15,7 @@ class ImageZoom extends Component {
     componentWillMount(){
         let imagelist = Control.state.imagelist;
         imagelist = imagelist.map((item) => {
-            return item.replace('\/orj360\/', "/large/").replace(/wx\d\./, "wx4.")
+            return item.replace('\/thumbnail\/', "/large/").replace(/wx\d\./, "wx4.")
         })
         this.setState({
             imglist: imagelist

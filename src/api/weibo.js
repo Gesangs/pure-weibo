@@ -123,17 +123,19 @@ export function getEmotions() {
 
 // http://open.weibo.com/wiki/2/short_url/expand
 // 长链转短链
-export function shortToLong(urls) {
+
+export function handleChain(chain){
   const data = {
-    url: urls,
+    url: chain,
     access_token
   }
   return axios.get('/api/toLong',{
     params: data
-  })
+  });
 }
-// http://gslb.miaopai.com/stream/.mp4
-// const audioUrl = handleUrl(text.match(/(http:\/\/t.cn\/\w+)/g))
+
+// `http://gslb.miaopai.com/stream/${longChain}.mp4`
+// const audioUrl = handleUrl(text.match(/(http:\/\/t.cn\/(\w|\d)+)/g))
 
 // 发布一条微博
 // http://open.weibo.com/wiki/2/statuses/update

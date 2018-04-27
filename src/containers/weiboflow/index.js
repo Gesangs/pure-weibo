@@ -9,7 +9,7 @@ import WeiboList from "../../component/weibolist";
 
 class WeiboFlow extends Component {
   static propTypes = {
-    getNewWeiBo: PropTypes.func.isRequired
+    getNewWeiBo: PropTypes.string.isRequired
   }
   constructor(props, context) {
     super(props, context);
