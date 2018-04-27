@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {handleWeibo} from "../../utils/class/weibo"
-import {weiboCount} from "../../config/config"
+import { handleWeibo } from "../../utils/class/weibo"
+import { weiboCount } from "../../config/config"
 import * as api from "../../api/weibo"
 import Head from "./head"
 import Scroll from "../../component/scroll/index"

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { handleChain } from "../../api/weibo"
-import {stopPro} from "../../router/route"
+import { stopPro } from "../../router/route"
 
 class Chain extends Component {
   static propTypes = {
@@ -46,11 +46,11 @@ class Chain extends Component {
     const { longChain, shortUrl } = this.state;
     return (
       <React.Fragment>
-        {longChain 
+        { longChain 
           ? <video controls autoplay name="media" style={{ width: '100%' }} onClick={(e) => {stopPro(e);return false}}>
-              <source src={longChain} type="video/mp4"></source>
+              <source src={ longChain } type="video/mp4"></source>
             </video> 
-          : <a src={shortUrl} onClick={this._loadchain.bind(this)}> 查看链接</a>}
+          : <a src={ shortUrl } onClick={this._loadchain.bind(this)}> 查看链接</a> }
       </React.Fragment>
     )
   }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Chain from "./chain";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import { connect } from "react-redux";
+
 class Content extends Component {
   static propTypes = {
     con: PropTypes.array
@@ -75,10 +76,6 @@ class Content extends Component {
           ) : item[0] === "topic" ? (
             <a key={index}>{item[1]}</a>
           ) : item[0] === "url" ? (
-            // <a href={item[1]} key={index}>
-            //   {" "}
-            //   查看原链接
-            // </a>
             <Chain url={item[1]} key={index} />
           ) : null;
         })}
