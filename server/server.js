@@ -3,16 +3,28 @@ var app = express();
 var request = require('request');
 var apiRoutes = express.Router()
 
-apiRoutes.get('/toLong', function(req, res) {
+const checkMiaopai = /\"videoSrc\":\"([^"]+)\"/;
+const checkWeiboVideo = /list=([^"]+)\"/;
+
+apiRoutes.get('/getVideo', function(req, res) {
     const shortUrl = req.query.url;
-    let url = `https://api.weibo.com/2/short_url/expand.json?access_token=${req.query.access_token}&url_short=${req.query.url}`
+    let result;
     request.get({
-        url,
+        url: decodeURIComponent(shortUrl)
     },function(error, response, body) {
-        body = JSON.parse(body)
-        res.json(body)
-        console.log(body)
-        console.log(url)
+        let videoSrc;
+        if(videoSrc = body.match(checkMiaopai)) {
+            result = {
+                video: videoSrc[0].replace(checkMiaopai, "$1")
+            }
+        } else if(videoSrc = body.match(checkWeiboVideo)) {
+            result = {
+                video: decodeURIComponent(videoSrc[0].replace(checkWeiboVideo, "$1"))
+            }
+        } else {
+            result = shortUrl
+        }
+        res.json(result)
     })
 })
 
@@ -143,7 +155,7 @@ apiRoutes.get('/shouquan', function(req, res) {
                 client_secret: '1819e114a616ed6d5fcb2385a443353c',
                 grant_type: "authorization_code",
                 redirect_uri: 'http://127.0.0.1:3000',
-                // redirect_uri: 'https://weibo.gesangs.com',
+                // redirect_uri: 'http://weibo.gesangs.com',
                 code: Code
             },
             encoding:'utf8'

@@ -124,12 +124,11 @@ export function getEmotions() {
 // http://open.weibo.com/wiki/2/short_url/expand
 // 长链转短链
 
-export function handleChain(chain){
+export function getVideo(chain){
   const data = {
-    url: chain,
-    access_token
+    url: chain
   }
-  return axios.get('/api/toLong',{
+  return axios.get('/api/getVideo',{
     params: data
   });
 }
