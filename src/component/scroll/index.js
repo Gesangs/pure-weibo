@@ -9,8 +9,7 @@ class Scroll extends Component {
   static propTypes = {
     onPullDownRefresh: PropTypes.func,
     onReachBottom: PropTypes.func,
-    load_tip: PropTypes.bool,
-    children: PropTypes.element
+    load_tip: PropTypes.bool
   }
 
   constructor(props, context) {

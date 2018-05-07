@@ -6,7 +6,7 @@ import { stopPro } from "../../router/route"
 
 class Chain extends Component {
   static propTypes = {
-    url: PropTypes.array
+    url: PropTypes.string
   }
   constructor(props, context) {
     super(props, context);

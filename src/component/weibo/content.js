@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 class Content extends Component {
   static propTypes = {
-    con: PropTypes.array
+    con: PropTypes.string
   }
   constructor(props, context) {
     super(props, context);
